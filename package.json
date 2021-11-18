@@ -1,5 +1,5 @@
 {
-  "name": "parcel-project-template",
+  "name": "project-4-filmoteka",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/Vladosik12333/project-4-filmoteka"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Soft West",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/Vladosik12333/project-4-filmoteka/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
@@ -26,3 +26,4 @@
     "sass": "^1.32.8"
   }
 }
+  
