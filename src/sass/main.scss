@@ -1,8 +1,14 @@
-// base:
 @import './base/reset-default';
 @import './base/typography';
 @import './base/colors';
-
-// components:
-
-// layuots:
+@import './base/content-body';
+@import './base/container';
+@import './components/logo';
+@import './components/navigation';
+@import './components/buttons';
+@import './components/film-card';
+@import './components/footer';
+@import './components/gallery';
+@import './components/modal';
+@import './layouts/home-header';
+@import './layouts/library-header';
