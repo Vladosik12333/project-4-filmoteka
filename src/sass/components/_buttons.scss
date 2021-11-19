@@ -1,0 +1,17 @@
+.button {
+  height: 44px;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  &__is-activ {
+    background: #ff6b01;
+    border: none;
+  }
+}
