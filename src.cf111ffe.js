@@ -13,4 +13,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"../templates/card-modal.hbs":"VM4V"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/home-header"),require("./js/library-header"),require("./js/gallery"),require("./js/footer"),require("./js/modal");
 },{"./sass/main.scss":"clu1","./js/api.js":"clu1","./js/locale-stor.js":"clu1","./js/home-header":"clu1","./js/library-header":"clu1","./js/gallery":"chxP","./js/footer":"clu1","./js/modal":"RSqK"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.9a890b3c.js.map
+//# sourceMappingURL=/project-4-filmoteka/src.cf111ffe.js.map
