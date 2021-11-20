@@ -1,0 +1,16 @@
+.button {
+    height: 44px;
+    border-radius: 5px;
+    color: $textLightColor;
+    border: 1px solid $textLightColor;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    &__is-activ {
+      background: $accentColort;
+      border: none;
+    }
+  }
