@@ -1,65 +1,64 @@
-<div class="backdrop backdrop-hidden">
-    <div class="modal-container">
-        <h2 class="visually-hidden">Film Modal</h2>
-
+<div class="backdrop backdrop--hidden">
+    <div class="container container--modal">
+      
         <!-- тут рендер карточки фільма -->
 
 
 <div class="film-info">
-    <div class="modal-poster-block">
+    <div class="film-info__poster-block">
         <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ci5A9TPmNajMxt1L8p4KlZ76sc9.jpg"
-            alt="A FISTFUL OF LEAD" class="modal-poster" />
+            alt="A FISTFUL OF LEAD" class="film-info__poster-image" />
     </div>
-<div class="flex-container"> 
-    <div class="modal-info">        
-        <h2 class="modal-title">A FISTFUL OF LEAD</h2>
+<div class="container container--inner-modal"> 
+    <div class="film-info__description">        
+        <h2 class="film-info__title">A FISTFUL OF LEAD</h2>
 
-            <ul class="modal-infotable">
-                <li class="item">
-                    <p>Vote / Votes</p>
-                    <span class="vote">7.3</span>
+            <ul class="film-info__table">
+                <li class="film-info__table-item">
+                    <p class="film-info__table-line-title">Vote / Votes</p>
+                    <span class="film-info__vote">7.3</span>
                     /
-                    <span class="votes">1260</span>
+                    <span class="film-info__votes">1260</span>
                 </li>
 
-                <li class="item">
-                    <p>Popularity</p>
-                    <span class="popularity">100.2</span>
+                <li class="film-info__table-item">
+                    <p class="film-info__table-line-title">Popularity</p>
+                    <span class="film-info__popularity">100.2</span>
                 </li>
 
-                <li class="item">
-                    <p>Original Title</p>
-                    <span class="original-title">A FISTFUL OF LEAD</span>
+                <li class="film-info__table-item">
+                    <p class="film-info__table-line-title">Original Title</p>
+                    <span class="film-info__original-title">A FISTFUL OF LEAD</span>
                 </li>
 
-                <li class="item">
-                    <p>Genre</p>
+                <li class="film-info__table-item">
+                    <p class="film-info__table-line-title">Genre</p>
 
-                    <ul class="genres-list">
+                    <ul class="film-info__genres-list">
                     <!-- тут будуть мінятись жанри -->
-                        <li class="genre">Western</li>        
+                        <li class="film-info__genre">Western</li>        
                     </ul>
 
                 </li>
 
             </ul>
 
-        <h3 class="about-title">About</h3>
-        <p class="about-text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
+        <h3 class="film-info__about-title">About</h3>
+        <p class="film-info__about-text">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
         gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
         abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
         bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
         been double crossed – but by who and how?</p>
     </div>
 
-    <ul class="modal-button-list">
-        <li class="modal-btn-item">
-            <button class="modal-btn" type="button" data-modal="watched"">
+    <ul class="film-info__button-list">
+        <li class="film-info__button-item">
+            <button class="button button--on-modal-is-active" type="button" data-modal="watched"">
                 add to Watched
             </button>
         </li>
-        <li class="modal-btn-item">
-            <button class="modal-btn" type="button" data-modal="queue" ">
+        <li class="film-info__button-item">
+            <button class="button button--on-modal" type="button" data-modal="queue" ">
                 add to queue
             </button>
         </li>

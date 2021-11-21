@@ -1,33 +1,31 @@
-// body.scroll-hidden {
-//   overflow: hidden;
-// }
+body.scroll-hidden {
+  overflow: hidden;
+}
 
 // Закоментуйте .backdrop щоб побачити вміст на сторінці
 
-// .backdrop {
-//   z-index: 20;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
+.backdrop {
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-//   width: 100%;
-//   height: 100%;
+  width: 100%;
+  height: 100%;
 
-//   font-family: 'Roboto', sans-serif;
+  background-color: rgba(0, 0, 0, 0.25);
 
-//   background-color: rgba(0, 0, 0, 0.25);
+  opacity: 1;
 
-//   opacity: 1;
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
 
-//   &-hidden {
-//     opacity: 0;
-//     pointer-events: none;
-
-//     .modal-container {
-//       transform: translate(-50%, -50%) scale(0);
-//     }
-//   }
-// }
+    .modal-container {
+      transform: translate(-50%, -50%) scale(0);
+    }
+  }
+}
 
 .visually-hidden {
   position: absolute;
@@ -37,7 +35,7 @@
   margin: -1px;
 }
 
-.modal-container {
+.container--modal {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -84,7 +82,7 @@
   }
 }
 
-.modal-poster-block {
+.film-info__poster-block {
   position: relative;
   @media screen and (min-width: 320px) and (max-width: 767px) {
     width: 240px;
@@ -104,7 +102,7 @@
     margin-right: 30px;
   }
 
-  .modal-poster {
+  .film-info__poster-image {
     border-radius: 5px;
     object-fit: cover;
     width: 100%;
@@ -112,13 +110,13 @@
   }
 }
 
-.flex-container {
+.container--inner-modal {
   @media screen and (min-width: 768px) {
     width: 50%;
   }
 }
 
-.modal-title {
+.film-info__title {
   margin-bottom: 20px;
 
   font-weight: 500;
@@ -134,11 +132,11 @@
   }
 }
 
-.modal-infotable {
+.film-info__table {
   margin-bottom: 20px;
 }
 
-.modal-infotable .item {
+.film-info__table-item {
   display: flex;
 
   font-weight: 500;
@@ -156,7 +154,7 @@
   }
 }
 
-.vote {
+.film-info__vote {
   margin-left: 41px;
   margin-right: 5px;
   padding: 1px 10px;
@@ -170,7 +168,7 @@
   }
 }
 
-.votes {
+.film-info__votes {
   padding: 1px 4px;
   margin-left: 5px;
   color: $textDarkColor;
@@ -179,7 +177,7 @@
   border-radius: 5px;
 }
 
-.popularity {
+.film-info__popularity {
   margin-left: 55px;
   color: $textDarkColor;
 
@@ -188,7 +186,7 @@
   }
 }
 
-.original-title {
+.film-info__original-title {
   margin-left: 41px;
   color: $textDarkColor;
   text-transform: uppercase;
@@ -198,7 +196,7 @@
   }
 }
 
-.genres-list {
+.film-info__genres-list {
   display: flex;
   flex-wrap: wrap;
   margin-left: 78px;
@@ -207,7 +205,7 @@
   }
 }
 
-.genre {
+.film-info__genre {
   color: $textDarkColor;
 
   &:not(:last-child)::after {
@@ -218,7 +216,7 @@
   }
 }
 
-.about-title {
+.film-info__about-title {
   margin-bottom: 10px;
   font-weight: 500;
   text-transform: uppercase;
@@ -228,7 +226,7 @@
   color: $textDarkColor;
 }
 
-.about-text {
+.film-info__about-text {
   margin-bottom: 21px;
 
   font-weight: 500;
@@ -238,50 +236,10 @@
   color: $textDarkColor;
 }
 
-.modal-button-list {
+.film-info__button-list {
   display: flex;
 }
 
-.modal-btn-item:not(:last-child) {
+.film-info__button-item:not(:last-child) {
   margin-right: 15px;
-}
-
-.modal-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 113px;
-  height: 44px;
-
-  padding: 14px 10px;
-
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  text-transform: uppercase;
-
-  color: $textDarkColor;
-  background-color: #fff;
-
-  border: 1px solid $textDarkColor;
-  border-radius: 5px;
-
-  cursor: pointer;
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 125px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 136px;
-  }
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    background-color: $accentColort;
-    border-color: $accentColort;
-    box-shadow: 0px 4px 4px rgba(255, 123, 0, 0.651);
-  }
 }
