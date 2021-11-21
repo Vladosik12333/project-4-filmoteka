@@ -56,9 +56,9 @@ export default class NewsApiService {
     const url = `${BASE_URL}/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
   
     const response = await fetch(url);
-    const movie = await response.json();
+    const genre = await response.json();
     if (response.ok) this.incrementPage();
-    return movie;
+    return genre;
   };
 
   incrementPage() {
