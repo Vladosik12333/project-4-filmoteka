@@ -10,9 +10,11 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=t(require("handlebars/dist/handlebars.runtime"));function t(e){return e&&e.__esModule?e:{default:e}}const r=e.default.template({compiler:[8,">= 4.3.0"],main:function(e,t,r,a,u){return"<div></div>"},useData:!0});var a=r;exports.default=a;
 },{"handlebars/dist/handlebars.runtime":"pAws"}],"chxP":[function(require,module,exports) {
 "use strict";var e=r(require("../templates/card-gallery.hbs"));function r(e){return e&&e.__esModule?e:{default:e}}
-},{"../templates/card-gallery.hbs":"VM4V"}],"RSqK":[function(require,module,exports) {
+},{"../templates/card-gallery.hbs":"VM4V"}],"Jl5Q":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=t(require("handlebars/dist/handlebars.runtime"));function t(e){return e&&e.__esModule?e:{default:e}}const r=e.default.template({compiler:[8,">= 4.3.0"],main:function(e,t,r,a,u){return""},useData:!0});var a=r;exports.default=a;
+},{"handlebars/dist/handlebars.runtime":"pAws"}],"RSqK":[function(require,module,exports) {
 "use strict";var e=r(require("../templates/card-modal.hbs"));function r(e){return e&&e.__esModule?e:{default:e}}
-},{"../templates/card-modal.hbs":"VM4V"}],"Focm":[function(require,module,exports) {
+},{"../templates/card-modal.hbs":"Jl5Q"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/home-header"),require("./js/library-header"),require("./js/gallery"),require("./js/footer"),require("./js/modal");
 },{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"cZF8","./js/home-header":"cZF8","./js/library-header":"cZF8","./js/gallery":"chxP","./js/footer":"cZF8","./js/modal":"RSqK"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.375ae19b.js.map
+//# sourceMappingURL=/project-4-filmoteka/src.feeb4647.js.map
