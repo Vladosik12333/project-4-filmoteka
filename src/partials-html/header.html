@@ -1,0 +1,42 @@
+<header class="header header--home">
+  <div class="container">
+    <div class="main-nav">
+      <a class="logo" href="#">
+        <svg class="logo__icon">
+          <use href="./images/icons/sprite.svg#icon-logo" width="24px" height="24px"></use>
+        </svg>
+        <span class="logo__item">Filmoteka</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link nav__link--current" href="#" id="home">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link " href="#" id="my-library">my library</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- library navigation -->
+    <div class="library-nav is-hidden">
+      <ul class="library-buttons">
+        <li>
+          <button id="library-watched" type="button" class="button button--is-active">
+            watched
+          </button>
+        </li>
+        <li><button id="library-queue" type="button" class="button">queue</button></li>
+      </ul>
+    </div>
+    <!-- input -->
+    <div class="input">
+      <input type="text" class="input__query" id="input" placeholder="Поиск фильмов" />
+      <img class="input__icon" src="./images/icons/search.svg" alt="Search icon" />
+    
+      <p class="input__error-messege is-hidden">
+      Search result not successful. Enter the correct movie name and
+    </div>
+    </p>
+  </div>
+</header>

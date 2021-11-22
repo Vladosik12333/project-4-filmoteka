@@ -1,68 +1,90 @@
 .button {
-    height: 44px;
-    border-radius: 5px;
-    color: $textLightColor;
-    border: 1px solid $textLightColor;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 255ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover,
-    &:focus {
-      border-color: $accentColort;
-      color: $accentColort;
-    }
+  width: 130px;
+  height: 44px;
+  border-radius: 5px;
+  padding: 0 8px;
+  color: $textLightColor;
+  border: 1px solid $textLightColor;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 255ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    border-color: $accentColort;
+    color: $accentColort;
   }
-  .button--is-activ {
-    background: $accentColort;
-    border: none;
-    &:hover,
-    &:focus {
-      color: $textDarkColor;
-    }
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
   }
-.button--on-modal{
-    color: $textDarkColor;
-    border: 1px solid $textDarkColor;
 }
 
-.library-button {
-  display: flex;
-  justify-content: space-between;
-  @media screen and(min-width: 768px) {
-    justify-content: center;
-    margin-left: -15px;
-  }  
-  button {
-    width: 130px;
-    @media screen and(min-width: 321px) {
-      width: 136px;
-    }
-    @media screen and(min-width: 768px) {
-      margin-left: 15px;
-    }
+.button--is-active {
+  background: $accentColort;
+  border: none;
+  &:hover,
+  &:focus {
+    color: $textDarkColor;
   }
 }
+
+.button--on-modal {
+  width: 113px;
+  color: $textDarkColor;
+  border: 1px solid $textDarkColor;
+
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+}
+
+.button--on-modal-is-active {
+  width: 113px;
+  background: $accentColort;
+  border: none;
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+  }
+  &:hover,
+  &:focus {
+    color: $textDarkColor;
+  }
+}
+
+.library-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+  margin: 0 auto;
+
+  @media screen and(min-width: 768px) {
+    width: 287px;
+  }
+}
+
 .modal-button {
   display: flex;
   justify-content: space-between;
-  @media screen and(min-width: 321px) {
-    justify-content:start;
-    margin-left: -15px;    
-  }  
-  button {
-    width: 113px;
-    padding: 0 10px 0 10px;
-    @media screen and(min-width: 321px) {
-      width: 125px;
-      margin-left: 15px;
-    }
-    @media screen and(min-width: 768px) {
-      margin-left: 15px;
-      width: 136px;
-    }
+  margin: 0 auto;
+  width: 240px;
+
+  @media screen and(min-width: 768px) {
+    width: 265px;
+  }
+
+  @media screen and(min-width: 1024px) {
+    width: 287px;
   }
 }
