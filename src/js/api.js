@@ -8,61 +8,74 @@ export default class NewsApiService {
 
   // *** for search movie *** //
   fetchMovies = async (query, currentPage) => {
-    if (currentPage === undefined) {
-      currentPage = this.page;
+    try {
+      currentPage ??= this.page || this.page === currentPage;
+
+      const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${query}&page=${currentPage}`;
+
+      const response = await fetch(url);
+      const movies = await response.json();
+      if (response.ok) {
+        this.page = currentPage;
+      }
+      return movies;
+    } catch (error) {
+      console.log('Error');
     }
-
-    const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${query}&page=${currentPage}`;
-
-    const response = await fetch(url);
-    const movies = await response.json();
-    if (response.ok) this.incrementPage();
-    return movies;
   };
 
   // *** for discription movie *** //
-  fetchMoviesById = async (movieId) => {
-    const url = `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+  fetchMoviesById = async movieId => {
+    try {
+      const url = `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
-    const response = await fetch(url);
-    const movie = await response.json();
-    if (response.ok) this.incrementPage();
-    return movie;
+      const response = await fetch(url);
+      const movie = await response.json();
+      if (response.ok) return movie;
+    } catch (error) {
+      console.log('Error');
+    }
   };
-
 
   // *** for get movie in trending *** //
   fetchMoviesInTrending = async (type, time, currentPage) => {
-    if (type === undefined) {
-      type = 'all';
-    }
-    if (time === undefined) {
-      time = 'day';
-    }
-    if (currentPage === undefined) {
-      currentPage = this.page;
-    }
+    try {
+      type ??= 'movie';
+      time ??= 'day';
+      currentPage ??= this.page || this.page === currentPage;
 
-    const url = `${BASE_URL}/3/trending/${type}/${time}?api_key=${API_KEY}&page=${currentPage}`;
+      const url = `${BASE_URL}/3/trending/${type}/${time}?api_key=${API_KEY}&page=${currentPage}`;
 
-    const response = await fetch(url);
-    const moviesInTrend = await response.json();
-    if (response.ok) this.incrementPage();
-    return moviesInTrend;
+      const response = await fetch(url);
+      const moviesInTrend = await response.json();
+      if (response.ok) {
+        this.page = currentPage;
+      }
+      return moviesInTrend;
+    } catch (error) {
+      console.log('Error');
+    }
   };
 
-    // *** for get movie's genres *** //
-  fetchMoviesByGenre = async () => {
-    const url = `${BASE_URL}/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-  
-    const response = await fetch(url);
-    const genre = await response.json();
-    if (response.ok) this.incrementPage();
-    return genre;
+  // *** for get movie's genres *** //
+  fetchGenre = async () => {
+    try {
+      const url = `${BASE_URL}/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+
+      const response = await fetch(url);
+      const genre = await response.json();
+      if (response.ok) return genre;
+    } catch (error) {
+      console.log('Error');
+    }
   };
 
   incrementPage() {
     this.page += 1;
+  }
+
+  decrementPage() {
+    this.page -= 1;
   }
 
   resetPage() {
@@ -77,6 +90,21 @@ export default class NewsApiService {
     this.searchQuery = newQuery;
   }
 }
+
+const newsApiService = new NewsApiService();
+
+//If client wants next page
+newsApiService.incrementPage();
+newsApiService.fetchMoviesInTrending();
+
+//If client wants previous page
+newsApiService.decrementPage();
+newsApiService.fetchMoviesInTrending();
+
+//If client wants open firsh page
+newsApiService.resetPage();
+newsApiService.fetchMoviesInTrending();
+
 
 
 //*** for search movie */
@@ -482,8 +510,6 @@ export default class NewsApiService {
 //   "total_pages": 38,
 //   "total_results": 748
 // }
-
-
 
 //*** discription */
 
