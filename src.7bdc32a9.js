@@ -19,4 +19,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"../templates/card-modal.hbs":"Jl5Q"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/home-header"),require("./js/library-header"),require("./js/gallery"),require("./js/footer"),require("./js/modal");
 },{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"tMMP","./js/home-header":"tMMP","./js/library-header":"tMMP","./js/gallery":"chxP","./js/footer":"tMMP","./js/modal":"RSqK"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.ff401590.js.map
+//# sourceMappingURL=/project-4-filmoteka/src.7bdc32a9.js.map
