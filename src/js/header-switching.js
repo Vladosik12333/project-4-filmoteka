@@ -1,8 +1,8 @@
 const refs = {
   header: document.querySelector('.header'),
   logo: document.querySelector('.logo'),
-  homePageBtn: document.querySelector('#home'),
-  libraryPageBtn: document.querySelector('#my-library'),
+  homePageBtn: document.querySelector('#home-js'),
+  libraryPageBtn: document.querySelector('#library-js'),
   inputContainer: document.querySelector('.input'),
   libraryContainer: document.querySelector('.library-nav'),
 };

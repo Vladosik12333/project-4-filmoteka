@@ -85,6 +85,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 35px;
 }
 
 .logo {
@@ -95,10 +96,6 @@
   &:focus {
     transform: scale(1.1);
   }
-  &__icon {
-    width: 24px;
-    height: 24px;
-  }
 }
 .logo__item {
   display: none;
@@ -107,9 +104,7 @@
   font-size: 14px;
   line-height: 35px;
   color: $textLightColor;
-  // @media screen and(min-width: 321px) {
-  //   display: block;
-  // }
+
   @media screen and(min-width: 768px) {
     display: block;
     font-size: 30px;
@@ -159,12 +154,9 @@
   width: 280px;
   height: 20px;
 
-  // margin-top: 37px;
-  // margin-left: auto;
-  // margin-right: auto;
   margin: 37px auto 0;
 
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid $textLightColor;
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -183,9 +175,9 @@
   border: none;
 
   vertical-align: top;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
   font-size: 14px;
   line-height: 16px;
   color: $textLightColor;
@@ -194,9 +186,9 @@
 }
 
 .input__query::placeholder {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
   font-size: 14px;
   line-height: 16px;
   color: $textLightColor;
@@ -211,9 +203,6 @@
 .input__error-messege {
   margin-top: 22px;
 
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 16px;
   text-align: left;

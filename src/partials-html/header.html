@@ -2,22 +2,35 @@
   <div class="container">
     <div class="main-nav">
       <a class="logo" href="#">
-        <svg class="logo__icon">
-          <use href="./images/icons/sprite.svg#icon-logo" width="24px" height="24px"></use>
+        <svg class="logo__icon" width="24px" height="24px">
+          <use href="./images/icons/sprite.svg#icon-logo" ></use>
         </svg>
         <span class="logo__item">Filmoteka</span>
       </a>
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link nav__link--current" href="#" id="home">Home</a>
+            <a class="nav__link nav__link--current" href="#" id="home-js">Home</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link " href="#" id="my-library">my library</a>
+            <a class="nav__link " href="#" id="library-js">my library</a>
           </li>
         </ul>
       </nav>
     </div>
+
+    <!-- input -->
+    <form class="input">
+      <input type="text" class="input__query" id="input" autofocus placeholder="Поиск фильмов" />
+
+      <svg class="input__icon" width="12" height="12">
+        <use href="./images/icons/sprite.svg#icon-search"></use>
+      </svg>
+    
+      <p class="input__error-messege is-hidden">
+      Search result not successful. Please enter the correct movie name.
+    </div>
+
     <!-- library navigation -->
     <div class="library-nav is-hidden">
       <ul class="library-buttons">
@@ -29,14 +42,7 @@
         <li><button id="library-queue" type="button" class="button">queue</button></li>
       </ul>
     </div>
-    <!-- input -->
-    <div class="input">
-      <input type="text" class="input__query" id="input" placeholder="Поиск фильмов" />
-      <img class="input__icon" src="./images/icons/search.svg" alt="Search icon" />
-    
-      <p class="input__error-messege is-hidden">
-      Search result not successful. Enter the correct movie name and
-    </div>
+
     </p>
   </div>
 </header>
