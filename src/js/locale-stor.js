@@ -34,7 +34,7 @@ class LocalStorWatch {
     getLocalStorage() {
         const parseli = localStorage.getItem('watched')
         this.getArray.push(JSON.parse(parseli))
-        return console.log(this.getArray)
+        return this.getArray
     
 }
 }
