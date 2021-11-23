@@ -1,1 +1,20 @@
-<div></div>
+{{#each this}}
+<li class="card-gallery">
+  <div class="card-gallery__poster">
+    <img src={{poster_path}} alt={{original_title}} class="card-gallery__image" />
+  </div>
+  <div>
+    <p class="card-gallery__title">
+      {{title}} |
+    </p>
+    <div class="card-gallery__descr">
+      <p class="card-gallery__genres-release">
+        <span>{{genres}}</span><span class="card-gallery_genres-other">, Other</span> | <span>{{release}}</span>
+      </p>
+      <p class="card-gallery__rate">
+        {{vote_average}}
+      </p>
+    </div>
+  </div>
+</li>
+{{/each}}
