@@ -9,7 +9,7 @@ export default class NewsApiService {
   // *** for search movie *** //
   fetchMovies = async (query, currentPage) => {
     try {
-      currentPage ??= this.page || this.page === currentPage;
+      // currentPage ??= this.page || this.page === currentPage;
 
       const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${query}&page=${currentPage}`;
 
@@ -40,9 +40,9 @@ export default class NewsApiService {
   // *** for get movie in trending *** //
   fetchMoviesInTrending = async (type, time, currentPage) => {
     try {
-      type ??= 'movie';
-      time ??= 'day';
-      currentPage ??= this.page || this.page === currentPage;
+      // type ??= 'movie';
+      // time ??= 'day';
+      // currentPage ??= this.page || this.page === currentPage;
 
       const url = `${BASE_URL}/3/trending/${type}/${time}?api_key=${API_KEY}&page=${currentPage}`;
 
@@ -104,8 +104,6 @@ newsApiService.fetchMoviesInTrending();
 //If client wants open firsh page
 newsApiService.resetPage();
 newsApiService.fetchMoviesInTrending();
-
-
 
 //*** for search movie */
 
