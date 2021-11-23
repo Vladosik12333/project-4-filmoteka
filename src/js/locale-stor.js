@@ -33,9 +33,6 @@ getLocalStorage() {
 }
 }
 
-
-
-
 class LocalStorWatch {
 constructor() {
 }
@@ -68,8 +65,6 @@ getLocalStorage() {
 // localStoreWatch.saveLocalStorage()
 // localStoreWatch.getLocalStorage();
 // localStorage.removeItem('watched')
-
-
 
 // const localStoreQueue = new LocalStorQueue();
 
