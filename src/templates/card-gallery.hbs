@@ -1,17 +1,20 @@
 {{#each this}}
-  <li class='card'>
-    <div class='card__tumb'>
-      <img id='{{id}}' src={{poster_path}} alt='{{title}}' class='card__image' />
+<li class="card-gallery">
+  <div class="card-gallery__poster">
+    <img src={{poster_path}} alt={{original_title}} class="card-gallery__image" />
+  </div>
+  <div>
+    <p class="card-gallery__title">
+      {{title}} |
+    </p>
+    <div class="card-gallery__descr">
+      <p class="card-gallery__genres-release">
+        <span>{{genres}}</span><span class="card-gallery_genres-other">, Other</span> | <span>{{release}}</span>
+      </p>
+      <p class="card-gallery__rate">
+        {{vote_average}}
+      </p>
     </div>
-    <h2 class='card__title'>{{original_title}}</h2>
-    <div class='card__caption'>
-      <ul class='card__items'>
-        {{#each genre_ids}}
-          <li class='card__item'>{{this}}</li>
-        {{/each}}
-      </ul>
-      <span class='card__year'>{{release_date}}</span>
-      <span class='card__rating'>{{vote_average}}</span>
-    </div>
-  </li>
+  </div>
+</li>
 {{/each}}
