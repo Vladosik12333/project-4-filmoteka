@@ -52,6 +52,8 @@ export default class NewsApiService {
       }
       if (currentPage === undefined) {
         currentPage = this.page;
+      } else {
+        this.page = currentPage;
       }
 
       const url = `${BASE_URL}/3/trending/${type}/${time}?api_key=${API_KEY}&page=${currentPage}`;
