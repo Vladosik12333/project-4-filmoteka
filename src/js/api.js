@@ -2,9 +2,7 @@ const API_KEY = 'e8ad9fce8be376ae39b35f64abca58d4';
 const BASE_URL = 'https://api.themoviedb.org';
 
 export default class NewsApiService {
-  constructor() {
-    this.page = 1;
-  }
+  page = 1;
 
   // *** for search movie *** //
   fetchMovies = async (query, currentPage) => {
@@ -15,16 +13,21 @@ export default class NewsApiService {
         this.page = currentPage;
       }
 
-      const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${query}&page=${currentPage}`;
+      const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`;
 
       const response = await fetch(url);
       const movies = await response.json();
-      if (response.ok) {
-        this.page = currentPage;
+
+      const respStatus = movies.results.length === 0 ? true : false;
+
+      if (respStatus) {
+        this.resetPage();
+        throw ReferenceError('0 movie');
       }
+
       return movies;
     } catch (error) {
-      console.log('Error');
+      console.log(error.message);
     }
   };
 
@@ -35,9 +38,16 @@ export default class NewsApiService {
 
       const response = await fetch(url);
       const movie = await response.json();
-      if (response.ok) return movie;
+
+      const respStatus = movie.success === false ? true : false;
+
+      if (respStatus) {
+        throw ReferenceError(movie.status_message);
+      }
+
+      return movie;
     } catch (error) {
-      console.log('Error');
+      console.log(error.message);
     }
   };
 
@@ -60,12 +70,17 @@ export default class NewsApiService {
 
       const response = await fetch(url);
       const moviesInTrend = await response.json();
-      if (response.ok) {
-        this.page = currentPage;
+
+      const respStatus = moviesInTrend.results.length === 0 ? true : false;
+
+      if (respStatus) {
+        this.resetPage();
+        throw ReferenceError('0 movie');
       }
+
       return moviesInTrend;
     } catch (error) {
-      console.log('Error');
+      console.log(error.message);
     }
   };
 
@@ -76,9 +91,16 @@ export default class NewsApiService {
 
       const response = await fetch(url);
       const genre = await response.json();
-      if (response.ok) return genre;
+
+      const respStatus = genre.genres.length === 0 ? true : false;
+
+      if (respStatus) {
+        throw ReferenceError('0 genres');
+      }
+
+      return genre;
     } catch (error) {
-      console.log('Error');
+      console.log(error.message);
     }
   };
 
@@ -93,29 +115,21 @@ export default class NewsApiService {
   resetPage() {
     this.page = 1;
   }
-
-  get query() {
-    return this.searchQuery;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
 }
 
 const newsApiService = new NewsApiService();
 
-//If client wants next page
-newsApiService.incrementPage();
-newsApiService.fetchMoviesInTrending();
+// //If client wants next page
+// newsApiService.incrementPage();
+// newsApiService.fetchMoviesInTrending();
 
-//If client wants previous page
-newsApiService.decrementPage();
-newsApiService.fetchMoviesInTrending();
+// //If client wants previous page
+// newsApiService.decrementPage();
+// newsApiService.fetchMoviesInTrending();
 
-//If client wants open firsh page
-newsApiService.resetPage();
-newsApiService.fetchMoviesInTrending();
+// //If client wants open firsh page
+// newsApiService.resetPage();
+// newsApiService.fetchMoviesInTrending();
 
 //*** for search movie */
 
