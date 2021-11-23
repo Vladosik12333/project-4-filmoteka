@@ -2,6 +2,7 @@
 @import './base/typography';
 @import './base/colors';
 @import './base/content-body';
+@import './base/patterns';
 @import './base/container';
 @import './components/logo';
 @import './components/navigation';
@@ -10,5 +11,4 @@
 @import './components/footer';
 @import './components/gallery';
 @import './components/modal';
-@import './layouts/home-header';
-@import './layouts/library-header';
+@import './layouts/header';
