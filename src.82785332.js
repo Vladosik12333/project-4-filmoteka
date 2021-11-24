@@ -20,7 +20,9 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=t(require("handlebars/dist/handlebars.runtime"));function t(e){return e&&e.__esModule?e:{default:e}}const r=e.default.template({compiler:[8,">= 4.3.0"],main:function(e,t,r,a,u){return""},useData:!0});var a=r;exports.default=a;
 },{"handlebars/dist/handlebars.runtime":"pAws"}],"RSqK":[function(require,module,exports) {
 "use strict";var e=r(require("../templates/card-modal.hbs"));function r(e){return e&&e.__esModule?e:{default:e}}
-},{"../templates/card-modal.hbs":"Jl5Q"}],"Focm":[function(require,module,exports) {
-"use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/header-switching"),require("./js/gallery"),require("./js/footer"),require("./js/modal");
-},{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"tMMP","./js/header-switching":"e11I","./js/gallery":"chxP","./js/footer":"b5Ik","./js/modal":"RSqK"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.85aa9163.js.map
+},{"../templates/card-modal.hbs":"Jl5Q"}],"xaqb":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.showErrorMessege=r;const e={errorContainer:document.querySelector(".input__error-messege")};function r(r){r||(r="Search result not successful. Please enter the correct movie name."),e.errorContainer.textContent=r,t(),setTimeout(o,4e3)}function t(){e.errorContainer.classList.remove("is-hidden")}function o(){e.errorContainer.classList.add("is-hidden")}
+},{}],"Focm":[function(require,module,exports) {
+"use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/header-switching"),require("./js/gallery"),require("./js/footer"),require("./js/modal"),require("./js/on-error");
+},{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"tMMP","./js/header-switching":"e11I","./js/gallery":"chxP","./js/footer":"b5Ik","./js/modal":"RSqK","./js/on-error":"xaqb"}]},{},["Focm"], null)
+//# sourceMappingURL=/project-4-filmoteka/src.82785332.js.map
