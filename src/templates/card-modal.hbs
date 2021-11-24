@@ -1,0 +1,58 @@
+<div class='film-info__poster-block' data-action="{{id}}">
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt={{title}}'
+        class='film-info__poster-image' />
+</div>
+<div class='container--inner-modal'>
+    <div class='film-info__description'>
+        <h2 class='film-info__title'>{{title}}</h2>
+
+        <ul class='film-info__table'>
+            <li class='film-info__table-item'>
+                <p class='film-info__table-line-title'>Vote / Votes</p>
+                <span class='film-info__vote'>{{vote_average}}</span>
+                /
+                <span class='film-info__votes'>{{vote_count}}</span>
+            </li>
+
+            <li class='film-info__table-item'>
+                <p class='film-info__table-line-title'>Popularity</p>
+                <span class='film-info__popularity'>{{popularity}}</span>
+            </li>
+
+            <li class='film-info__table-item'>
+                <p class='film-info__table-line-title'>Original Title</p>
+                <span class='film-info__original-title'>{{original_title}}</span>
+            </li>
+
+            <li class='film-info__table-item'>
+                <p class='film-info__table-line-title'>Genre</p>
+
+                <ul class='film-info__genres-list'>
+                    <!-- тут будуть мінятись жанри -->
+                    {{!-- {{#each genre}} --}}
+                    <li class='film-info__genre'>{{this.name}}</li>
+                    {{!-- {{/each} --}}
+                </ul>
+
+            </li>
+
+        </ul>
+
+        <h3 class='film-info__about-title'>About</h3>
+        <p class='film-info__about-text'>{{overview}}</p>
+    </div>
+
+    <ul class='modal-button'>
+        <li class='film-info__button-item'>
+            <button class='button button--on-modal-is-active js-watched' type='button' data-modal='watched' data-action="{{id}}">
+                add to Watched
+            </button>
+        </li>
+        <li class='film-info__button-item'>
+            <button class='button button--on-modal js-queue' type='button' data-modal='queue' data-action="{{id}}">
+                add to queue
+            </button>
+        </li>
+    </ul>
+
+</div>
