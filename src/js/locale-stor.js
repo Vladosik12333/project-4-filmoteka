@@ -124,6 +124,9 @@ const save = (key, value) => {
 
 
 
+
+
+
 // class LocalStorWatch {
 // constructor() {
 // }
@@ -131,7 +134,7 @@ const save = (key, value) => {
 // const queue = localStorage.getItem('watched');
 // const array = []
 // if (queue) {
-// if (queue.includes(JSON.stringify(obj.id))) {
+// if (queue.includes(JSON.stringify(obj))) {
 // return alert('такой фильм уже есть')
 // }
 // const pars = JSON.parse(queue)
@@ -144,10 +147,27 @@ const save = (key, value) => {
 // }
 // getLocalStorage() {
 //         const parseli = localStorage.getItem('watched')
-//         return JSON.parse(parseli)
-// }
+//     return JSON.parse(parseli)
+    
+  
+
 // }
 
+// const localStoreWatch = new LocalStorWatch();
+
+// localStoreWatch.saveLocalStorage(obj3);
+// localStoreWatch.saveLocalStorage(obj3)
+// localStoreWatch.saveLocalStorage()
+// localStoreWatch.getLocalStorage();
+// localStorage.removeItem('watched')
+
+const localStoreQueue = new LocalStorQueue();
+
+// localStoreQueue.saveLocalStorage(obj1);
+localStoreQueue.saveLocalStorage(obj)
+// localStoreQueue.saveLocalStorage()
+// localStoreQueue.getLocalStorage();
+// localStorage.removeItem('queue')
 
 
 // class LocalStorQueue {
