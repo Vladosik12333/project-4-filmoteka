@@ -19,8 +19,6 @@
 //           "vote_count": 20
 // }
 
-    //   console.log (obj )
-
 class LocalStorQueue {
 constructor() {
 }
@@ -47,7 +45,6 @@ array.push(...queueParse , obj)
 load('queue')
 }
 }
-
 
 class LocalStorWatch {
 constructor() {
