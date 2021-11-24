@@ -1,64 +1,108 @@
 
-// const obj1 = {
-// name: "vaasya",
-// vote: "8.3",
-// votes: "12000000",
-// popularity: "100,2",
-// genre: "Western",
-// about: "Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve been double crossed – but by who and how?", img: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ci5A9TPmNajMxt1L8p4KlZ76sc9.jpg"
+//   const obj3 =    {
+//           "adult": false,
+//           "backdrop_path": "/kwkAGwtwdsdsS57FckZq6n44oipW1AN.jpg",
+//           "genre_ids": [
+//             2112,
+//               27
+//           ],
+//           "id": 7771,
+//           "original_language": "en",
+//           "original_title": "AfdfdddsdssdsdAddddRRRRAAYlien Outbreak",
+//           "overview": "In a smalfdfl rural codsdsdsmmunity, local police officers Zoe and Patrick begin their shift as normal but soon, strange events unfold. Residents begin behaving erratically, and suicidal panic spreads amongst the township they are trying to protect. Zoe and Patrick realise alien machines are taking hold, cutting their small group of survivors off from the outside world. Can the determined humans band together to save their community, and all mankind, from extinction?",
+//           "popularity": 222.115,
+//           "poster_path": "/5m4Gwewe9cxcxwTRxUdDnx7UNn1bNLN54J.jpg",
+//           "release_date": "2020-02-11",
+//           "title": "Alien Outbreak",
+//           "video": false,
+//           "vote_average": 3.8,
+//           "vote_count": 20
 // }
+
+    //   console.log (obj )
 
 class LocalStorQueue {
 constructor() {
 }
-saveLocalStorage(obj) {
-const queue = localStorage.getItem('queue');
-const array = []
-if (queue) {
-if (queue.includes(JSON.stringify(obj))) {
+    saveLocalStorage(obj) {
+        const queueParse = JSON.parse(localStorage.getItem('queue'));
+        const array = []
+        
+        if (queueParse) {
+     const uniqueId =  queueParse.find(num => num.id === obj.id)
+    if (uniqueId)   {
 return alert('такой фильм уже есть')
-}
-const pars = JSON.parse(queue)
-array.push(...pars , obj)
-localStorage.setItem('queue', JSON.stringify(array))
+    }
+
+array.push(...queueParse , obj)
+    save('queue',array)
 } else{
-array.push(obj)
-localStorage.setItem('queue', JSON.stringify(array))
+    array.push(obj)
+    save('queue',array)
+
 }
 }
-getLocalStorage() {
-        const parseli = localStorage.getItem('queue')
-        return JSON.parse(parseli)
+    getLocalStorage() {
+    
+load('queue')
 }
 }
+
 
 class LocalStorWatch {
 constructor() {
 }
-saveLocalStorage(obj) {
-const queue = localStorage.getItem('watched');
-const array = []
-if (queue) {
-if (queue.includes(JSON.stringify(obj))) {
+    saveLocalStorage(obj) {
+        const watchParse = JSON.parse(localStorage.getItem('watched'));
+        const array = []
+        
+        if (watchParse) {
+     const uniqueId =  watchParse.find(num => num.id === obj.id)
+    if (uniqueId)   {
 return alert('такой фильм уже есть')
-}
-const pars = JSON.parse(queue)
-array.push(...pars , obj)
-localStorage.setItem('watched', JSON.stringify(array))
+    }
+
+array.push(...watchParse , obj)
+    save('watched',array)
 } else{
-array.push(obj)
-localStorage.setItem('watched', JSON.stringify(array))
+    array.push(obj)
+    save('watched',array)
+
 }
 }
-getLocalStorage() {
-        const parseli = localStorage.getItem('watched')
-        return JSON.parse(parseli)
+    getLocalStorage() {
+    
+load('watched')
 }
 }
+
+
+
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (err) {
+    console.error('Set state error: ', err);
+  }
+};
+
+
+
+    const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (err) {
+    console.error('Get state error: ', err);
+  }
+};
+      
 
 // const localStoreWatch = new LocalStorWatch();
 
-// localStoreWatch.saveLocalStorage(obj3);
+// localStoreWatch.saveLocalStorage(obj5);
 // localStoreWatch.saveLocalStorage(obj3)
 // localStoreWatch.saveLocalStorage()
 // localStoreWatch.getLocalStorage();
@@ -66,11 +110,44 @@ getLocalStorage() {
 
 // const localStoreQueue = new LocalStorQueue();
 
-// localStoreQueue.saveLocalStorage(obj1);
-// localStoreQueue.saveLocalStorage(obj2)
+// localStoreQueue.saveLocalStorage(obj5);
+// localStoreQueue.saveLocalStorage(obj)
 // localStoreQueue.saveLocalStorage()
 // localStoreQueue.getLocalStorage();
 // localStorage.removeItem('queue')
+
+
+
+
+
+
+
+
+
+// class LocalStorWatch {
+// constructor() {
+// }
+// saveLocalStorage(obj) {
+// const queue = localStorage.getItem('watched');
+// const array = []
+// if (queue) {
+// if (queue.includes(JSON.stringify(obj.id))) {
+// return alert('такой фильм уже есть')
+// }
+// const pars = JSON.parse(queue)
+// array.push(...pars , obj)
+// localStorage.setItem('watched', JSON.stringify(array))
+// } else{
+// array.push(obj)
+// localStorage.setItem('watched', JSON.stringify(array))
+// }
+// }
+// getLocalStorage() {
+//         const parseli = localStorage.getItem('watched')
+//         return JSON.parse(parseli)
+// }
+// }
+
 
 
 // class LocalStorQueue {
