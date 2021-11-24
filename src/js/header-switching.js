@@ -1,3 +1,6 @@
+import {renderWidthLocalStorege} from './record-loc-stor'
+import renderSrartPage from './gallery'
+
 const refs = {
   header: document.querySelector('.header'),
   logo: document.querySelector('.logo'),
@@ -19,6 +22,8 @@ function switchPageToLibrary() {
   refs.header.classList.add('header--library');
   refs.libraryContainer.classList.remove('is-hidden');
   refs.libraryPageBtn.classList.add('nav__link--current');
+
+  renderWidthLocalStorege('watched')
 }
 
 function switchPageToHome() {
@@ -29,11 +34,6 @@ function switchPageToHome() {
   refs.header.classList.add('header--home');
   refs.inputContainer.classList.remove('is-hidden');
   refs.homePageBtn.classList.add('nav__link--current');
-}
 
-// console.log(refs.header);
-// console.log(refs.logo);
-// console.log(refs.homePageBtn);
-// console.log(refs.libraryPageBtn);
-// console.log(refs.inputContainer);
-// console.log(refs.libraryContainer);
+  renderSrartPage()
+}
