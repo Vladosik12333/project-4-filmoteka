@@ -5,6 +5,7 @@
   box-sizing: border-box;
   cursor: pointer;
   text-align: start;
+  font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   margin-left: 20px;
@@ -15,9 +16,16 @@
     margin-top: 30px;
     margin-left: 30px;
   }
+
+  @media screen and (min-width: 1024px) {
+    width: 274px;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
 }
 
 .card-gallery__poster {
+  height: 398px;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -29,15 +37,16 @@
 }
 
 .card-gallery__descr {
-  display: inline-block;
+  display: flex;
 }
 
 .card-gallery__genres-release {
   color: $accentColort;
   margin-right: 10px;
+  // display: flex;
 }
 
-.card-gallery_genres-other {
+.card-gallery_genres-other--hidden {
   display: none;
 }
 
@@ -47,6 +56,10 @@
   background-color: $accentColort;
   color: $textLightColor;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding-top: 1px;
 }
 
 // ///
