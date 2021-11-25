@@ -6,10 +6,6 @@ const localStoreWatch = new LocalStor();
 const resultTemplate = document.querySelector('.gallery')
 const libraryWatchedBtn = document.querySelector('#library-watched')
 const libraryQueueBtn = document.querySelector('#library-queue')
-const modalWatchedBtn=document.querySelector("#modal-watched");
-const modalQueueBtn=document.querySelector("#modal-queue");
-
-let accObjLocflStorege ={};
 
 libraryWatchedBtn.addEventListener('click', ()=>{
     libraryQueueBtn.classList.remove('button--is-active');
@@ -35,7 +31,7 @@ function genereObjForLS(obj){
         acc.push(el.name);          
     });
     
-    return accObjLocflStorege = {
+    return {
         "id": obj["id"],        
         "poster_path": obj["poster_path"],
         "title": obj["title"],
@@ -45,16 +41,4 @@ function genereObjForLS(obj){
     };
 }
 
-// class saveObjinLS{
-
-// }
-// modalWatchedBtn.addEventListener('click', ()=>{
-//     localStoreWatch.saveWatched(accObjLocflStorege);
-//     accObjLocflStorege={};
-// });
-// modalQueueBtn.addEventListener('click', ()=>{
-//     localStoreWatch.saveQueue(accObjLocflStorege);
-//     accObjLocflStorege={};
-// });
-
-export {renderWidthLocalStorege, genereObjForLS}
+export {renderWidthLocalStorege, genereObjForLS, localStoreWatch}
