@@ -35,7 +35,7 @@ function genereObjForLS(obj){
         "poster_path": obj["poster_path"],
         "title": obj["title"],
         "vote_average": obj["vote_average"],
-        "genre": acc.slice(0, 2).join(', '),
+        "genre": acc.length > 2 ? acc.slice(0, 2).join(', ')+', Other': acc.slice(0, 2).join(', '),
         "release": parseInt(obj["release_date"])
     };
 }
