@@ -1,5 +1,5 @@
 <div class='film-info__poster-block' data-action="{{id}}">
-    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt={{title}}'
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{title}}'
         class='film-info__poster-image' />
 </div>
 <div class='container--inner-modal'>
@@ -29,9 +29,9 @@
 
                 <ul class='film-info__genres-list'>
                     <!-- тут будуть мінятись жанри -->
-                    {{!-- {{#each genre}} --}}
+                    {{#each genre}}
                     <li class='film-info__genre'>{{this.name}}</li>
-                    {{!-- {{/each} --}}
+                    {{/each}}
                 </ul>
 
             </li>
@@ -44,15 +44,16 @@
 
     <ul class='modal-button'>
         <li class='film-info__button-item'>
-            <button class='button button--on-modal-is-active js-watched' type='button' data-modal='watched' data-action="{{id}}">
+            <button class='button button--on-modal-is-active js-watched' type='button' id='modal-watched' data-action="{{id}}">
                 add to Watched
             </button>
         </li>
         <li class='film-info__button-item'>
-            <button class='button button--on-modal js-queue' type='button' data-modal='queue' data-action="{{id}}">
+            <button class='button button--on-modal js-queue' type='button' id='modal-queue' data-action="{{id}}">
                 add to queue
             </button>
         </li>
     </ul>
 
 </div>
+
