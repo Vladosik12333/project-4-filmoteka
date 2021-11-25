@@ -32,10 +32,11 @@ export default function renderStartPage() {
             } else {
                 el.release = parseInt(el.release_date)
             }
+
         });
         return data.results
     }).then(final => {
-        appendCardInfo(data.results);
+        appendCardInfo(final);
     })
 });
 
@@ -43,5 +44,5 @@ export default function renderStartPage() {
 
 function appendCardInfo(data) {
     refs.cardContainer.innerHTML = '';
-    refs.cardContainer.insertAdjacentHTML('beforeend', template(data))
+    refs.cardContainer.insertAdjacentHTML('beforeend', template(data));
 }
