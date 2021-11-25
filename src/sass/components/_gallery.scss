@@ -86,3 +86,13 @@
 .spinner-grow--hidden {
   display: none;
 }
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  border-radius: 5px;
+  background: $accentColort !important;
+  border-color: $accentColort !important;
+}
+.tui-pagination {
+  padding-bottom: 60px;
+  padding-top: 50px;
+}
