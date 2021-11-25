@@ -25,7 +25,6 @@ function renderWidthLocalStorege(value){
 }
 
 function genereObjForLS(obj){
-    console.log(obj);
     const acc =[];
     obj["genres"].forEach(el => {
         acc.push(el.name);          

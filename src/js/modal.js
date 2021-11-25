@@ -57,12 +57,12 @@ function openModalFilm(evt) {
 // close modal
 function closeModal(evt) {
     // refs.cardModalTpl.innerHTML = '';
-
+  refs.modalFilmInfo.innerHTML = '';
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');
   refs.backdrop.removeEventListener('click', backdropClick);
   window.removeEventListener('keydown', onPressEsc);
-  refs.modalFilmCont.removeEventListener('click', onClikBtnFilmModal);   
+    
 
 }
 
