@@ -1,7 +1,11 @@
 {{#each this}}
 <li class="card-gallery" data-id={{id}}>
   <div class="card-gallery__poster">
-    <img src='https://image.tmdb.org/t/p/w300/{{poster_path}}' alt='{{original_title}}' class="card-gallery__image" />
+    {{#if this.poster_path}}
+      <img src='https://image.tmdb.org/t/p/w300/{{poster_path}}' alt='{{original_title}}' class="card-gallery__image" />
+    {{else}}
+      <img src='' alt='' class="card-gallery__image" />
+    {{/if}}
   </div>
   <div>
     <p class="card-gallery__title">
