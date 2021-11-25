@@ -1,6 +1,6 @@
 import cardModalTpl from '../templates/card-modal.hbs';
 import NewsApiService from './api';
-import {genereObjForLS} from './record-loc-stor'
+import {genereObjForLS, localStoreWatch} from './record-loc-stor'
 
 const refs = {
     backdrop: document.querySelector('.js-backdrop'),
@@ -8,8 +8,7 @@ const refs = {
     modalFilmInfo: document.querySelector('.js-film-info'),
     closeFilmModal: document.querySelector('.js-film-modal-close'),
     bodyEl: document.querySelector('body'),
-    cardContainer: document.querySelector('.gallery'),
-    
+    cardContainer: document.querySelector('.gallery'),    
 }
 
 const newsApiService = new NewsApiService();
@@ -20,7 +19,7 @@ refs.cardContainer.addEventListener('click', openModalFilm);
 function openModalFilm(evt) {
   evt.preventDefault();
 
-  
+    //визначаєм на що клікнули
 
   const isFilmCardId = evt.path[2].dataset.id
 
@@ -30,21 +29,35 @@ function openModalFilm(evt) {
     
  newsApiService.fetchMoviesById(isFilmCardId).then(response => {
 
-    refs.modalFilmInfo.insertAdjacentHTML('beforeend', cardModalTpl(response));
-    genereObjForLS(response);    
+    refs.modalFilmInfo.innerHTML = cardModalTpl(response);
+    genereObjForLS(response);
+
+    const modalWatchedBtn=document.querySelector("#modal-watched");
+    const modalQueueBtn=document.querySelector("#modal-queue");
+
+    modalWatchedBtn.addEventListener('click', ()=>{      
+      localStoreWatch.saveWatched(genereObjForLS(response));
+    });
+    modalQueueBtn.addEventListener('click', ()=>{ 
+      localStoreWatch.saveQueue(genereObjForLS(response));      
+    });
   });
 
   refs.bodyEl.classList.add('scroll-hidden');
-    refs.backdrop.classList.remove('backdrop--hidden');
-     refs.backdrop.addEventListener('click', backdropClick);
+  refs.backdrop.classList.remove('backdrop--hidden');
+
+  refs.backdrop.addEventListener('click', backdropClick);
   refs.closeFilmModal.addEventListener('click', closeModal);
 
   window.addEventListener('keydown', onPressEsc);
+
   
 }
 
 // close modal
 function closeModal(evt) {
+    // refs.cardModalTpl.innerHTML = '';
+
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');
   refs.backdrop.removeEventListener('click', backdropClick);
@@ -65,16 +78,3 @@ function backdropClick(evt) {
     closeModal();
   }
 }
-
-
-// close modal
-//  function closeModal(evt) {
-//     refs.modalFilmInfo.innerHTML = '';
-
-//   refs.bodyEl.classList.remove('scroll-hidden');
-//   refs.backdrop.classList.add('backdrop--hidden');
-//   refs.backdrop.removeEventListener('click', backdropClick);
-//   window.removeEventListener('keydown', onPressEsc);
-  
-
-// }
