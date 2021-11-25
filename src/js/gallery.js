@@ -6,9 +6,9 @@ const refs = {
     cardContainer: document.querySelector('.gallery'),
 }
 
-renderSrartPage();
+renderStartPage();
 
-function renderSrartPage() {
+export default function renderStartPage() {
 
     
     newsApiService.fetchMoviesInTrending().then(data => {
@@ -42,5 +42,6 @@ function renderSrartPage() {
 }
 
 function appendCardInfo(data) {
+    refs.cardContainer.innerHTML = '';
     refs.cardContainer.insertAdjacentHTML('beforeend', template(data))
 }
