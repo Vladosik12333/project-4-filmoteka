@@ -7,3 +7,4 @@ import './js/gallery';
 import './js/footer';
 import './js/modal';
 import './js/on-error';
+import './js/record-loc-stor'

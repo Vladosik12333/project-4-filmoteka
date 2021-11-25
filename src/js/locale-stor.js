@@ -1,3 +1,4 @@
+import { showErrorMessege } from './on-error'; 
 
 export default class LocalStor {
     constructor() {
@@ -8,7 +9,8 @@ export default class LocalStor {
             const getValue = localStorage.getItem(key);  
             return getValue === null ? undefined : JSON.parse(getValue);
         } catch (err) {
-            console.error('Get state error: ', err);
+            console.log(123);
+            showErrorMessege('The list is empty. Add to movie');
         }
     };  
     _save(key, value) {
@@ -16,7 +18,7 @@ export default class LocalStor {
             const getString = JSON.stringify(value);
             localStorage.setItem(key, getString);
         } catch (err) {
-            console.error('Set state error: ', err);
+            showErrorMessege('Select a movie');
         }
     };
     saveQueue(obj) {
@@ -49,29 +51,8 @@ export default class LocalStor {
         this._save('watched',array)  
         }
     }
-    getWatched() {
-        this._load('watched')
+    get(value) {
+        return this._load(value)
     }
-    getQueue() {
-        this._load('queue')
-    }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
