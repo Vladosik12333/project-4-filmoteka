@@ -37,4 +37,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{"lodash.debounce":"PZFh","./api":"cZF8","../templates/card-gallery.hbs":"VM4V","./pagination":"o8lo"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/pagination"),require("./js/header-switching"),require("./js/gallery"),require("./js/footer"),require("./js/modal"),require("./js/on-error"),require("./js/record-loc-stor"),require("./js/search-on-input");
 },{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"tMMP","./js/pagination":"o8lo","./js/header-switching":"e11I","./js/gallery":"chxP","./js/footer":"b5Ik","./js/modal":"RSqK","./js/on-error":"xaqb","./js/record-loc-stor":"TWHU","./js/search-on-input":"RBln"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.94159cd1.js.map
+//# sourceMappingURL=/project-4-filmoteka/src.aa89a952.js.map
