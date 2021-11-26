@@ -7,6 +7,7 @@ import { pagination, onButton } from './pagination';
 const refs = {
   input: document.querySelector('#input'),
   cardContainer: document.querySelector('.gallery'),
+  spinner: document.querySelector('.spinner'),
 };
 
 const movieApiServise = new NewsApiService();
@@ -15,6 +16,11 @@ refs.input.addEventListener('input', debounce(renderMovieSearch, 500));
 
 function renderMovieSearch(event) {
   const query = event.target.value;
+
+  if (query.trim() === '') return;
+  refs.spinner.classList.remove('is-hidden');
+  document.body.style.overflow = 'hidden';
+
   //...........start refactoring.............................................
   movieApiServise.fetchMovies(query).then(data => {
     movieApiServise
@@ -46,6 +52,8 @@ function renderMovieSearch(event) {
       })
       .then(final => {
         appendCardInfo(data.results);
+        refs.spinner.classList.add('is-hidden');
+        document.body.style.overflow = 'scroll';
       });
     pagination.reset(data.total_pages);
   });

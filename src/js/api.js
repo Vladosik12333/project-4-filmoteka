@@ -19,8 +19,6 @@ export default class NewsApiService {
       const movies = await response.json();
 
       const respStatus = movies.total_pages === 0 ? true : false;
-      console.log(movies.total_pages);
-      console.log(respStatus);
 
       if (respStatus) {
         this.resetPage();
