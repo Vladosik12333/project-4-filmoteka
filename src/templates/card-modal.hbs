@@ -1,6 +1,10 @@
 <div class='film-info__poster-block' data-action="{{id}}">
+    {{#if this.poster_path}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{title}}'
         class='film-info__poster-image' />
+        {{else}}
+        <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/256px-No-Image-Placeholder.svg.png' width="100%" height="100%" alt='' class="card-gallery__image" />
+        {{/if}}
 </div>
 <div class='container--inner-modal'>
     <div class='film-info__description'>
