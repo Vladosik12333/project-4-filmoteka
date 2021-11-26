@@ -1,3 +1,5 @@
+import { showErrorMessege } from './on-error';
+
 const API_KEY = 'e8ad9fce8be376ae39b35f64abca58d4';
 const BASE_URL = 'https://api.themoviedb.org';
 
@@ -13,7 +15,9 @@ export default class NewsApiService {
         this.page = currentPage;
       }
 
-      const url = `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`;
+      const url = encodeURI(
+        `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`,
+      );
 
       const response = await fetch(url);
       const movies = await response.json();
@@ -27,7 +31,7 @@ export default class NewsApiService {
 
       return movies;
     } catch (error) {
-      console.log(error.message);
+      showErrorMessege();
     }
   };
 
