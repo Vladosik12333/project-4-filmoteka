@@ -8,10 +8,8 @@ export default class LocalStor {
                 const watchParse = JSON.parse(localStorage.getItem(key));
         if (watchParse) {
             const uniqueId = watchParse.find(num => num.id === obj.id)
-            console.log(uniqueId)
-           console.log(!uniqueId)
-        if (!uniqueId) {
-               return alert(` Фильм ${obj.original_title} отсуствует в вашей библиотеке`)
+            if (!uniqueId) {
+                return alert(` Фильм ${obj.original_title} отсуствует в вашей библиотеке`)
             } else {
                 const filterDel = watchParse.filter(el => el.id !== obj.id)
                 this._save(key, filterDel)
@@ -70,7 +68,7 @@ export default class LocalStor {
         }
     }
     get(value) {
-        return console.log(this._load(value))
+        return this._load(value)
     }
     deleteWatch(obj) {
         this._deleted(obj ,'watched')
@@ -80,5 +78,3 @@ export default class LocalStor {
         this._deleted(obj ,'queue')
     }
 }
-
-
