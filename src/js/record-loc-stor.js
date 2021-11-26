@@ -24,22 +24,20 @@ function renderWidthLocalStorege(value){
     resultTemplate.insertAdjacentHTML('beforeend', templete(data));
 }
 
-function saveOnLocalstorege(obj){
+function genereObjForLS(obj){
     const acc =[];
     obj["genres"].forEach(el => {
         acc.push(el.name);          
     });
     
-    const objLocalStorege = {
+    return {
         "id": obj["id"],        
         "poster_path": obj["poster_path"],
         "title": obj["title"],
         "vote_average": obj["vote_average"],
-        "genre": acc.slice(0, 2).join(', '),
+        "genre": acc.length > 2 ? acc.slice(0, 2).join(', ')+', Other': acc.slice(0, 2).join(', '),
         "release": parseInt(obj["release_date"])
     };
-        
-    localStoreWatch.saveWatched(objLocalStorege);
 }
 
-export {renderWidthLocalStorege, saveOnLocalstorege}
+export {renderWidthLocalStorege, genereObjForLS, localStoreWatch}
