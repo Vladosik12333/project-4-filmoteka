@@ -2,6 +2,7 @@
 import debounce from 'lodash.debounce';
 import NewsApiService from './api';
 import template from '../templates/card-gallery.hbs';
+import { pagination, onButton } from './pagination';
 
 const refs = {
   input: document.querySelector('#input'),
@@ -46,7 +47,9 @@ function renderMovieSearch(event) {
       .then(final => {
         appendCardInfo(data.results);
       });
+    pagination.reset(data.total_pages);
   });
+  onButton(query);
 }
 
 function appendCardInfo(data) {
