@@ -83,6 +83,13 @@
   color: #6c757d;
 }
 
-.spinner-grow--hidden {
-  display: none;
+// .spinner-grow--hidden {
+//   display: none;
+// }
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
 }
