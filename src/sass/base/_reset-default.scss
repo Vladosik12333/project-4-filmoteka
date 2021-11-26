@@ -1,3 +1,11 @@
+main {
+  min-height: calc(100vh - (230px + 100px));
+
+  @media screen and(min-width: 768px) {
+    min-height: calc(100vh - (230px + 77px));
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;
