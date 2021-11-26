@@ -2,6 +2,7 @@ import './sass/main.scss';
 
 import './js/api.js';
 import './js/locale-stor.js';
+import './js/pagination';
 import './js/header-switching';
 import './js/gallery';
 import './js/footer';

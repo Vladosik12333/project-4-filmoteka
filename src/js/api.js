@@ -18,7 +18,9 @@ export default class NewsApiService {
       const response = await fetch(url);
       const movies = await response.json();
 
-      const respStatus = movies.results.length === 0 ? true : false;
+      const respStatus = movies.total_pages === 0 ? true : false;
+      console.log(movies.total_pages);
+      console.log(respStatus);
 
       if (respStatus) {
         this.resetPage();
@@ -52,7 +54,7 @@ export default class NewsApiService {
   };
 
   // *** for get movie in trending *** //
-  fetchMoviesInTrending = async (type, time, currentPage) => {
+  fetchMoviesInTrending = async (currentPage, type, time) => {
     try {
       if (type === undefined) {
         type = 'movie';
@@ -71,7 +73,7 @@ export default class NewsApiService {
       const response = await fetch(url);
       const moviesInTrend = await response.json();
 
-      const respStatus = moviesInTrend.results.length === 0 ? true : false;
+      const respStatus = moviesInTrend.total_pages === 0 ? true : false;
 
       if (respStatus) {
         this.resetPage();
