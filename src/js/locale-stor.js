@@ -1,80 +1,95 @@
-import { showErrorMessege } from './on-error'; 
+import { showErrorMessege } from './on-error';
 
-export default class LocalStor {
-    constructor() {
-
+export default class LocalStorage {
+  _deleted(key, obj) {
+    const listParse = JSON.parse(localStorage.getItem(key));
+    if (listParse) {
+      const uniqueId = listParse.find(film => film.id === obj.id);
+      if (!uniqueId) {
+        return alert(` Фильм ${obj.original_title} отсуствует в вашей библиотеке`);
+      } else {
+        const newList = listParse.filter(film => film.id !== obj.id);
+        this._save(key, newList);
+      }
+    } else {
+      return alert(`В вашей библиотеке ${key} нету фильмов `);
     }
-    _deleted(obj ,key) {
-                const watchParse = JSON.parse(localStorage.getItem(key));
-        if (watchParse) {
-            const uniqueId = watchParse.find(num => num.id === obj.id)
-            if (!uniqueId) {
-                return alert(` Фильм ${obj.original_title} отсуствует в вашей библиотеке`)
-            } else {
-                const filterDel = watchParse.filter(el => el.id !== obj.id)
-                this._save(key, filterDel)
-            }
-        } else {
-            return alert(`В вашей библиотеке watched нету фильмов `)
-        }
-    
-}
+  }
 
-    _load(key) {
-        try {
-            const getValue = localStorage.getItem(key);
-            return getValue === null ? undefined : JSON.parse(getValue);
-        } catch (err) {
-            console.log(123);
-            showErrorMessege('The list is empty. Add to movie');
-        }
+  _load(key) {
+    try {
+      const getValue = localStorage.getItem(key);
+      if (getValue === null) {
+        throw ReferenceError();
+      }
+      return JSON.parse(getValue);
+    } catch (err) {
+      showErrorMessege('The list is empty. Add to movie');
+    }
+  }
+
+  _save(key, value) {
+    try {
+      const getString = JSON.stringify(value);
+      localStorage.setItem(key, getString);
+    } catch (err) {
+      showErrorMessege('Select a movie');
+    }
+  }
+
+  _newObjForLS(obj) {
+    const acc = [];
+    obj['genres'].forEach(genre => {
+      acc.push(genre.name);
+    });
+
+    return {
+      id: obj['id'],
+      poster_path: obj['poster_path'],
+      title: obj['title'],
+      vote_average: obj['vote_average'],
+      genre: acc.length > 2 ? acc.slice(0, 2).join(', ') + ', Other' : acc.slice(0, 2).join(', '),
+      release: parseInt(obj['release_date']),
     };
-    _save(key, value) {
-        try {
-            const getString = JSON.stringify(value);
-            localStorage.setItem(key, getString);
-        } catch (err) {
-            showErrorMessege('Select a movie');
-        }
-    };
-    saveQueue(obj) {
-        const queueParse = JSON.parse(localStorage.getItem('queue'));
-        const array = []
-        if (queueParse) {
-            const uniqueId = queueParse.find(num => num.id === obj.id)
-            if (uniqueId) {
-                return alert('такой фильм уже есть')
-            }
-            array.push(...queueParse, obj)
-            this._save('queue', array)
-        } else {
-            array.push(obj)
-            this._save('queue', array)
-        }
+  }
+
+  saveQueue(obj) {
+    const newObj = this._newObjForLS(obj);
+    const queueParse = JSON.parse(localStorage.getItem('queue'));
+    const arrayToLS = [];
+    if (queueParse) {
+      if (queueParse.find(num => num.id === newObj.id)) return alert('такой фильм уже есть');
+      arrayToLS.push(...queueParse, newObj);
+      this._save('queue', arrayToLS);
+    } else {
+      arrayToLS.push(newObj);
+      this._save('queue', arrayToLS);
     }
-    saveWatched(obj) {
-        const watchParse = JSON.parse(localStorage.getItem('watched'));
-        const array = []
-        if (watchParse) {
-            const uniqueId = watchParse.find(num => num.id === obj.id)
-            if (uniqueId) {
-                return alert('такой фильм уже есть')
-            }
-            array.push(...watchParse, obj)
-            this._save('watched', array)
-        } else {
-            array.push(obj)
-            this._save('watched', array)
-        }
+  }
+
+  saveWatched(obj) {
+    const newObj = this._newObjForLS(obj);
+    const watchParse = JSON.parse(localStorage.getItem('watched'));
+    const arrayToLS = [];
+    if (watchParse) {
+      if (watchParse.find(num => num.id === newObj.id)) return alert('такой фильм уже есть');
+      arrayToLS.push(...watchParse, newObj);
+      this._save('watched', arrayToLS);
+    } else {
+      arrayToLS.push(newObj);
+      this._save('watched', arrayToLS);
     }
-    get(value) {
-        return this._load(value)
-    }
-    deleteWatch(obj) {
-        this._deleted(obj ,'watched')
-    }
-     
-    deleteQueue(obj) {
-        this._deleted(obj ,'queue')
-    }
+  }
+
+  get(key) {
+    return this._load(key);
+  }
+
+  deleteWatch(obj) {
+    this._deleted('watched', obj);
+  }
+
+  deleteQueue(obj) {
+    this._deleted('queue', obj);
+  }
 }

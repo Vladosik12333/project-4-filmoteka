@@ -1,25 +1,25 @@
 <header class="header header--home">
+  
   <div class="container">
-    <div class="main-nav">
-      <a class="logo" href="#">
+    <div class="container-nav">
+      <a class="container-nav__logo logo" href="#" target="_self">
         <svg class="logo__icon" width="24px" height="24px">
           <use href="./images/icons/sprite.svg#icon-logo" ></use>
         </svg>
         <h1 class="logo__item">Filmoteka</h1>
       </a>
-      <nav class="nav">
+      <nav class="container-nav__nav nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link nav__link--current" href="#" id="home-js">Home</a>
+            <a class="nav__link nav__link--current" href="#" target="_self" id="js-home">Home</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link " href="#" id="library-js">my library</a>
+            <a class="nav__link " href="#" id="js-library">my library</a>
           </li>
         </ul>
       </nav>
     </div>
 
-    <!-- input -->
     <form class="input">
       <input type="text" class="input__query" id="input" autofocus placeholder="Поиск фильмов" />
 
@@ -32,7 +32,6 @@
       
     
 
-    <!-- library navigation -->
     <div class="library-nav is-hidden">
       <ul class="library-buttons">
         <li>
@@ -44,6 +43,5 @@
       </ul>
     </div>
 
-    </p>
   </div>
 </header>
