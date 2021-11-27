@@ -1,72 +1,51 @@
-import cardModalTpl from '../templates/card-modal.hbs';
-import NewsApiService from './api';
-import {genereObjForLS, localStoreWatch} from './record-loc-stor'
+import template from '../templates/card-modal.hbs';
+import ApiService from './api';
+import LocalStorage from './locale-stor';
 
 const refs = {
-    backdrop: document.querySelector('.js-backdrop'),
-    modalFilmCont: document.querySelector('.js-modal-container'),
-    modalFilmInfo: document.querySelector('.js-film-info'),
-    closeFilmModal: document.querySelector('.js-film-modal-close'),
-    bodyEl: document.querySelector('body'),
-    cardContainer: document.querySelector('.gallery'),    
-}
+  backdrop: document.querySelector('.js-backdrop'),
+  modalFilmCont: document.querySelector('.js-modal-container'),
+  modalFilmInfo: document.querySelector('.js-film-info'),
+  closeModalButton: document.querySelector('.js-modal-button-close'),
+  bodyEl: document.body,
+  cardContainer: document.querySelector('.gallery'),
+};
 
-const newsApiService = new NewsApiService();
+const api = new ApiService();
+const ls = new LocalStorage();
 
 refs.cardContainer.addEventListener('click', openModalFilm);
 
-// відкриваєм модалку
 function openModalFilm(evt) {
   evt.preventDefault();
-
-    //визначаєм на що клікнули
-
-  const isFilmCardId = evt.path[2].dataset.id
+  const isFilmCardId = evt.path[2].dataset.id;
 
   if (!isFilmCardId) {
-      return;
-    }
-    
- newsApiService.fetchMoviesById(isFilmCardId).then(response => {
+    return;
+  }
 
-    refs.modalFilmInfo.innerHTML = cardModalTpl(response);
-    genereObjForLS(response);
+  api.fetchMoviesById(isFilmCardId).then(response => {
+    refs.modalFilmInfo.innerHTML = template(response);
 
-    const modalWatchedBtn=document.querySelector("#modal-watched");
-    const modalQueueBtn=document.querySelector("#modal-queue");
+    const modalWatchedBtn = document.querySelector('#modal-watched');
+    const modalQueueBtn = document.querySelector('#modal-queue');
 
-    modalWatchedBtn.addEventListener('click', ()=>{      
-      localStoreWatch.saveWatched(genereObjForLS(response));
+    modalWatchedBtn.addEventListener('click', () => {
+      ls.saveWatched(response);
     });
-    modalQueueBtn.addEventListener('click', ()=>{ 
-      localStoreWatch.saveQueue(genereObjForLS(response));      
+    modalQueueBtn.addEventListener('click', () => {
+      ls.saveQueue(response);
     });
   });
 
   refs.bodyEl.classList.add('scroll-hidden');
   refs.backdrop.classList.remove('backdrop--hidden');
 
+  refs.closeModalButton.addEventListener('click', closeModal);
   refs.backdrop.addEventListener('click', backdropClick);
-  refs.closeFilmModal.addEventListener('click', closeModal);
-
   window.addEventListener('keydown', onPressEsc);
-
-  
 }
 
-// close modal
-function closeModal(evt) {
-    // refs.cardModalTpl.innerHTML = '';
-  refs.modalFilmInfo.innerHTML = '';
-  refs.bodyEl.classList.remove('scroll-hidden');
-  refs.backdrop.classList.add('backdrop--hidden');
-  refs.backdrop.removeEventListener('click', backdropClick);
-  window.removeEventListener('keydown', onPressEsc);
-    
-
-}
-
-// close escape
 function onPressEsc(evt) {
   if (evt.code === 'Escape') {
     closeModal();
@@ -74,7 +53,15 @@ function onPressEsc(evt) {
 }
 
 function backdropClick(evt) {
-   if (evt.target === evt.currentTarget) {
+  if (evt.target === evt.currentTarget) {
     closeModal();
   }
+}
+
+function closeModal() {
+  refs.modalFilmInfo.innerHTML = '';
+  refs.bodyEl.classList.remove('scroll-hidden');
+  refs.backdrop.classList.add('backdrop--hidden');
+  refs.backdrop.removeEventListener('click', backdropClick);
+  window.removeEventListener('keydown', onPressEsc);
 }

@@ -11,11 +11,11 @@
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 255ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 255ms $animationFunction;
   &:hover,
   &:focus {
-    border-color: $accentColort;
-    color: $accentColort;
+    border-color: $accentColor;
+    color: $accentColor;
   }
 
   @media screen and (min-width: 768px) {
@@ -24,7 +24,7 @@
 }
 
 .button--is-active {
-  background: $accentColort;
+  background: $accentColor;
   border: none;
   &:hover,
   &:focus {
@@ -40,7 +40,7 @@
   &:hover,
   &:focus {
     color: $textLightColor;
-    background: $accentColort;
+    background: $accentColor;
     border: none;
   }
 
@@ -52,23 +52,6 @@
     width: 136px;
   }
 }
-
-// .button--on-modal-is-active {
-//   width: 113px;
-//   background: $accentColort;
-//   border: none;
-//   @media screen and (min-width: 768px) {
-//     width: 125px;
-//   }
-
-//   @media screen and (min-width: 1024px) {
-//     width: 136px;
-//   }
-//   &:hover,
-//   &:focus {
-//     color: $textDarkColor;
-//   }
-// }
 
 .library-buttons {
   display: flex;

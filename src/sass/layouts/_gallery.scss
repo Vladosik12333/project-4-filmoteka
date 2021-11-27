@@ -1,0 +1,26 @@
+.main-section {
+  text-align: center;
+  background-color: $textLightColor;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -20px;
+  margin-left: -20px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: -30px;
+    margin-left: -30px;
+  }
+}

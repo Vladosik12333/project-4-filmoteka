@@ -21,7 +21,7 @@
   }
 }
 
-.footer-info__text {
+.footer-info__text-top {
   flex-basis: 100%;
   text-align: center;
   margin-bottom: 10px;
@@ -32,15 +32,15 @@
   }
 }
 
-.footer-info__text,
-.footer-box__text {
+.footer-info__text-top,
+.footer-info__text {
   line-height: 1.17;
   font-size: 14px;
   color: #545454;
   display: inline-block;
 }
 
-.footer-info__article-text::after {
+.footer-info__text-part::after {
   content: '|';
   margin: 0 0.4em;
 }
@@ -50,13 +50,13 @@
   align-items: center;
 }
 
-.footer-box__icon {
+.footer-info__icon {
   margin: 0 10px;
-  fill: $accentColort;
-  stroke: $accentColort;
+  fill: $accentColor;
+  stroke: $accentColor;
 }
 
-.footer-box__button {
+.footer-info__button {
   text-decoration: underline;
   color: inherit;
   line-height: inherit;

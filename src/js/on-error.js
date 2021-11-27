@@ -22,11 +22,3 @@ function stopErrorMessage() {
 }
 
 export { showErrorMessege };
-
-// ІМПОРТ:
-// import { showErrorMessege } from './js/on-error';
-
-// ПРИЙМАЄ:
-// стрінгу, текст якої відобразиться в повідомленні про помилку.
-// Цей параметр (message) необов'язковий.
-// За замовчуванням текст повідомлення про помилку - з макету.
