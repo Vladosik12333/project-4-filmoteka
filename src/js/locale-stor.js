@@ -6,13 +6,13 @@ export default class LocalStorage {
     if (listParse) {
       const uniqueId = listParse.find(film => film.id === obj.id);
       if (!uniqueId) {
-        return alert(`Фильм ${obj.original_title} отсуствует в вашей библиотеке.`);
+        return alert(`The "${obj.original_title}" movie is not in your library.`);
       } else {
         const newList = listParse.filter(film => film.id !== obj.id);
         this._save(key, newList);
       }
     } else {
-      return alert(`В вашей библиотеке "${key}"" нету фильмов.`);
+      return alert(`There are no movies in your "${key}" library.`);
     }
   }
 
@@ -24,7 +24,7 @@ export default class LocalStorage {
       }
       return JSON.parse(getValue);
     } catch (err) {
-      showErrorMessege(`Ваша библиотека ${key} пустая. Добавьте фильм.`);
+      showErrorMessege(`Your "${key}" library is empty. Add a movie, please.`);
     }
   }
 
@@ -33,7 +33,7 @@ export default class LocalStorage {
       const getString = JSON.stringify(value);
       localStorage.setItem(key, getString);
     } catch (err) {
-      showErrorMessege('Выберите фильм.');
+      showErrorMessege('Select a movie.');
     }
   }
 
@@ -58,7 +58,7 @@ export default class LocalStorage {
     const queueParse = JSON.parse(localStorage.getItem('queue'));
     const arrayToLS = [];
     if (queueParse) {
-      if (queueParse.find(num => num.id === newObj.id)) return alert('такой фильм уже есть');
+      if (queueParse.find(num => num.id === newObj.id)) return alert('The movie is already there.');
       arrayToLS.push(...queueParse, newObj);
       this._save('queue', arrayToLS);
     } else {
@@ -72,7 +72,7 @@ export default class LocalStorage {
     const watchParse = JSON.parse(localStorage.getItem('watched'));
     const arrayToLS = [];
     if (watchParse) {
-      if (watchParse.find(num => num.id === newObj.id)) return alert('такой фильм уже есть');
+      if (watchParse.find(num => num.id === newObj.id)) return alert('The movie is already there.');
       arrayToLS.push(...watchParse, newObj);
       this._save('watched', arrayToLS);
     } else {

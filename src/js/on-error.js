@@ -4,7 +4,7 @@ const refs = {
 
 function showErrorMessege(message) {
   if (!message) {
-    message = 'Фильм не найден. Пожалуйста, повторите запрос.';
+    message = 'No movie found. Please repeat your request.';
   }
 
   refs.errorContainer.textContent = message;
