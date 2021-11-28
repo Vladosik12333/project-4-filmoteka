@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   transition: 255ms $animationFunction;
-  &:hover,
-  &:focus {
+  &:hover{
     transform: scale(1.1);
   }
 }

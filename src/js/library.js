@@ -21,7 +21,15 @@ refs.libraryQueueBtn.addEventListener('click', () => {
   renderLocalStorage('queue');
 });
 
-export default function renderLocalStorage(value) {
+function renderLocalStorage(value) {
+  const data = ls.get(value);
+  refs.resultTemplate.innerHTML = '';
+  refs.resultTemplate.insertAdjacentHTML('beforeend', template(data));
+}
+
+export default function renderLocalStorageExport(value) {
+  refs.libraryQueueBtn.classList.remove('button--is-active');
+  refs.libraryWatchedBtn.classList.add('button--is-active');
   const data = ls.get(value);
   refs.resultTemplate.innerHTML = '';
   refs.resultTemplate.insertAdjacentHTML('beforeend', template(data));
