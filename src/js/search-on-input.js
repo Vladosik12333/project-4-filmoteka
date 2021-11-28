@@ -13,15 +13,19 @@ refs.input.addEventListener('keypress', enterDisable);
 async function renderMovieSearch(event) {
   const query = event.target.value;
 
-  if (query.trim() === '') return;
-  refs.spinner.classList.remove('is-hidden');
-  document.body.style.overflow = 'hidden';
+  try {
+    if (query.trim() === '') return;
+    refs.spinner.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
 
-  await renderPage('fetchMovies', query).then(pages => pagination.reset(pages));
+    await renderPage('fetchMovies', query).then(pages => pagination.reset(pages));
 
-  refs.spinner.classList.add('is-hidden');
-  document.body.style.overflow = 'scroll';
-  startPagination(query);
+    refs.spinner.classList.add('is-hidden');
+    document.body.style.overflow = 'scroll';
+    startPagination(query);
+  } catch (error) {
+    refs.spinner.classList.add('is-hidden');
+  }
 }
 
 function enterDisable(event) {
