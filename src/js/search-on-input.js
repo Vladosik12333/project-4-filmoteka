@@ -8,6 +8,7 @@ const refs = {
 };
 
 refs.input.addEventListener('input', debounce(renderMovieSearch, 500));
+refs.input.addEventListener('keypress', enterDisable);
 
 async function renderMovieSearch(event) {
   const query = event.target.value;
@@ -21,4 +22,10 @@ async function renderMovieSearch(event) {
   refs.spinner.classList.add('is-hidden');
   document.body.style.overflow = 'scroll';
   startPagination(query);
+}
+
+function enterDisable(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+  }
 }
