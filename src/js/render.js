@@ -44,9 +44,12 @@ function uncodeGenresAndDate(moviesToUncode, encodedGenres) {
     }
     if (movie.first_air_date) {
       movie.release = parseInt(movie.first_air_date);
-    } else {
+    } else if (movie.release_date) {
       movie.release = parseInt(movie.release_date);
+    } else {
+      movie.release = '-';
     }
+    
   });
 
   return moviesToUncode;
