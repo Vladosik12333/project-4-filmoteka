@@ -6,13 +6,13 @@ export default class LocalStorage {
     if (listParse) {
       const uniqueId = listParse.find(film => film.id === obj.id);
       if (!uniqueId) {
-        return alert(` Фильм ${obj.original_title} отсуствует в вашей библиотеке`);
+        return alert(`Фильм ${obj.original_title} отсуствует в вашей библиотеке.`);
       } else {
         const newList = listParse.filter(film => film.id !== obj.id);
         this._save(key, newList);
       }
     } else {
-      return alert(`В вашей библиотеке ${key} нету фильмов `);
+      return alert(`В вашей библиотеке "${key}"" нету фильмов.`);
     }
   }
 
@@ -24,7 +24,7 @@ export default class LocalStorage {
       }
       return JSON.parse(getValue);
     } catch (err) {
-      showErrorMessege('The list is empty. Add to movie');
+      showErrorMessege(`Ваша библиотека ${key} пустая. Добавьте фильм.`);
     }
   }
 
@@ -33,7 +33,7 @@ export default class LocalStorage {
       const getString = JSON.stringify(value);
       localStorage.setItem(key, getString);
     } catch (err) {
-      showErrorMessege('Select a movie');
+      showErrorMessege('Выберите фильм.');
     }
   }
 
