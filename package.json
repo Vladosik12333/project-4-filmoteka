@@ -28,6 +28,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "react": "^17.0.2",
     "tui-pagination": "^3.4.1"
   }
 }

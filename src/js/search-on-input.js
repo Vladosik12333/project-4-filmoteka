@@ -11,14 +11,17 @@ refs.input.addEventListener('input', debounce(renderMovieSearch, 500));
 
 async function renderMovieSearch(event) {
   const query = event.target.value;
+  try {
+    if (query.trim() === '') return;
+    refs.spinner.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
 
-  if (query.trim() === '') return;
-  refs.spinner.classList.remove('is-hidden');
-  document.body.style.overflow = 'hidden';
+    await renderPage('fetchMovies', query).then(pages => pagination.reset(pages));
 
-  await renderPage('fetchMovies', query).then(pages => pagination.reset(pages));
-
-  refs.spinner.classList.add('is-hidden');
-  document.body.style.overflow = 'scroll';
-  startPagination(query);
+    refs.spinner.classList.add('is-hidden');
+    document.body.style.overflow = 'scroll';
+    startPagination(query);
+  } catch (error) {
+    refs.spinner.classList.add('is-hidden');
+  }
 }
