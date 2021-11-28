@@ -4,7 +4,7 @@ const refs = {
 
 function showErrorMessege(message) {
   if (!message) {
-    message = 'Search result not successful. Please enter the correct movie name.';
+    message = 'No movie found. Please repeat your request.';
   }
 
   refs.errorContainer.textContent = message;
