@@ -1,5 +1,5 @@
-import template from '../templates/card-gallery.hbs';
 import MovieApiService from './api';
+import observeRendGallery from './observer'
 
 const api = new MovieApiService();
 
@@ -24,7 +24,9 @@ export default async function renderGalleryFromApi(method, query, nextPage) {
 
   const genres = await api.fetchGenre().then(response => response.genres);
   const dataToRender = uncodeGenresAndDate(movies, genres);
-  appendGallery(dataToRender);
+
+  observeRendGallery(dataToRender);
+
   if (method === 'fetchMovies') return totalPages;
 }
 
@@ -53,8 +55,4 @@ function uncodeGenresAndDate(moviesToUncode, encodedGenres) {
   });
 
   return moviesToUncode;
-}
-
-function appendGallery(data) {
-  document.querySelector('.gallery').innerHTML = template(data);
 }

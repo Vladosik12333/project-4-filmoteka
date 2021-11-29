@@ -1,12 +1,12 @@
 import LocalStorage from './locale-stor.js';
-import template from '../templates/card-gallery.hbs';
+import observeRendGallery from './observer'
 
 const ls = new LocalStorage();
 
 const refs = {
-  resultTemplate: document.querySelector('.gallery'),
+  
   libraryWatchedBtn: document.querySelector('#library-watched'),
-  libraryQueueBtn: document.querySelector('#library-queue'),
+  libraryQueueBtn: document.querySelector('#library-queue'),  
 };
 
 refs.libraryWatchedBtn.addEventListener('click', () => {
@@ -22,9 +22,8 @@ refs.libraryQueueBtn.addEventListener('click', () => {
 });
 
 function renderLocalStorage(value) {
-  const data = ls.get(value);
-  refs.resultTemplate.innerHTML = '';
-  refs.resultTemplate.insertAdjacentHTML('beforeend', template(data));
+  const data = ls.get(value);  
+  observeRendGallery(data)
 }
 
 export default function renderLocalStorageExport(value) {
@@ -32,3 +31,4 @@ export default function renderLocalStorageExport(value) {
   refs.libraryWatchedBtn.classList.add('button--is-active');
   renderLocalStorage(value);
 }
+
