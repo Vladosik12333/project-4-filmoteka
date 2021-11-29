@@ -1,6 +1,6 @@
 import LocalStorage from './locale-stor.js';
-import template from '../templates/card-gallery.hbs';
-import { smallSpinnerOn } from './spinner';
+import observeRendGallery from './observer-library'
+
 
 const ls = new LocalStorage();
 
@@ -24,9 +24,7 @@ refs.libraryQueueBtn.addEventListener('click', () => {
 
 function renderLocalStorage(value) {
   const data = ls.get(value);
-  refs.resultTemplate.innerHTML = '';
-  refs.resultTemplate.insertAdjacentHTML('beforeend', template(data));
-  smallSpinnerOn();
+  observeRendGallery(data);  
 }
 
 export default function renderLocalStorageExport(value) {
