@@ -1,0 +1,107 @@
+.team-title {
+  margin: 50px 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 35px;
+  text-align: center;
+  color: #009fff;
+  font-size: 40px;
+}
+
+.team-list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1024px) {
+    justify-content: space-evenly;
+  }
+}
+
+.team-item {
+  width: 280px;
+  height: 450px;
+  margin-bottom: 10px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 5px $bgOverlayColor;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 14px;
+    margin-left: 14px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-right: 7px;
+    margin-left: 7px;
+  }
+}
+
+.team-item__photo {
+  height: 280px;
+  width: 280px;
+  object-fit: cover;
+}
+
+.team-item__name {
+  margin: 20px 0 10px 0;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.team-item__position {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.team-item__info-contacts {
+  font-size: 15px;
+  font-weight: 400;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  color: $bgOverlayColor;
+}
+
+.button-close-team-modal {
+  display: block;
+  margin: 20px auto;
+  width: 70px;
+  border: 1px $accentColor solid;
+  border-radius: 20px;
+  transition: 250ms $animationFunction;
+
+  &:hover,
+  &:focus {
+    background-color: $accentColor;
+    stroke: $textLightColor;
+    cursor: pointer;
+
+    & .icon-close-team-modal {
+      stroke: $textLightColor;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 100px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 200px;
+    margin: 50px auto;
+    height: 40px;
+  }
+}
+
+.icon-close-team-modal {
+  margin: auto;
+  display: block;
+  stroke: $accentColor;
+  transition: 250ms $animationFunction;
+}
