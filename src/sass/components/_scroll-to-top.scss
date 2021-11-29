@@ -1,0 +1,39 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  z-index: 100;
+  display: none;
+  cursor: pointer;
+  padding: 1px;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    fill: $accentColor;
+    stroke: $accentColor;
+  }
+
+  @media screen and (min-width: 321px) {
+    right: 15px;
+    bottom: 30px;
+
+    &__icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    right: 40px;
+    bottom: 20px;
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
