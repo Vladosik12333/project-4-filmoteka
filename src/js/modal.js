@@ -3,7 +3,7 @@ import ApiService from './api';
 import LocalStorage from './locale-stor';
 
 const refs = {
-  backdrop: document.querySelector('.js-backdrop'),
+  backdrop: document.querySelector('.js-backdrop-film'),
   modalFilmCont: document.querySelector('.js-modal-container'),
   modalFilmInfo: document.querySelector('.js-film-info'),
   closeModalButton: document.querySelector('.js-modal-button-close'),

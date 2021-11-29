@@ -10,3 +10,4 @@ import './js/modal';
 import './js/on-error';
 import './js/library';
 import './js/search-on-input';
+import './js/team';
