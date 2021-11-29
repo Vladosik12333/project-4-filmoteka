@@ -1,5 +1,6 @@
 import template from '../templates/card-gallery.hbs';
 import MovieApiService from './api';
+import { smallSpinnerOn, largeSpinnerOff } from './spinner';
 
 const api = new MovieApiService();
 
@@ -24,7 +25,10 @@ export default async function renderGalleryFromApi(method, query, nextPage) {
 
   const genres = await api.fetchGenre().then(response => response.genres);
   const dataToRender = uncodeGenresAndDate(movies, genres);
+  largeSpinnerOff();
   appendGallery(dataToRender);
+  smallSpinnerOn();
+
   if (method === 'fetchMovies') return totalPages;
 }
 
@@ -49,7 +53,6 @@ function uncodeGenresAndDate(moviesToUncode, encodedGenres) {
     } else {
       movie.release = '-';
     }
-    
   });
 
   return moviesToUncode;
