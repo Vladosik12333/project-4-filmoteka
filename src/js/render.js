@@ -1,5 +1,6 @@
 import MovieApiService from './api';
-import observeRendGallery from './observer'
+import observeRendGallery from './observer';
+import { smallSpinnerOn, largeSpinnerOff } from './spinner';
 
 const api = new MovieApiService();
 
@@ -24,8 +25,8 @@ export default async function renderGalleryFromApi(method, query, nextPage) {
 
   const genres = await api.fetchGenre().then(response => response.genres);
   const dataToRender = uncodeGenresAndDate(movies, genres);
-
-  observeRendGallery(dataToRender);
+  largeSpinnerOff();
+  smallSpinnerOn();
 
   if (method === 'fetchMovies') return totalPages;
 }
@@ -51,7 +52,6 @@ function uncodeGenresAndDate(moviesToUncode, encodedGenres) {
     } else {
       movie.release = '-';
     }
-    
   });
 
   return moviesToUncode;

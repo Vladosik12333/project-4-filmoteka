@@ -1,12 +1,12 @@
 import LocalStorage from './locale-stor.js';
-import observeRendGallery from './observer'
+import observeRendGallery from './observer';
+import { smallSpinnerOn } from './spinner';
 
 const ls = new LocalStorage();
 
 const refs = {
-  
   libraryWatchedBtn: document.querySelector('#library-watched'),
-  libraryQueueBtn: document.querySelector('#library-queue'),  
+  libraryQueueBtn: document.querySelector('#library-queue'),
 };
 
 refs.libraryWatchedBtn.addEventListener('click', () => {
@@ -22,8 +22,9 @@ refs.libraryQueueBtn.addEventListener('click', () => {
 });
 
 function renderLocalStorage(value) {
-  const data = ls.get(value);  
-  observeRendGallery(data)
+  const data = ls.get(value);
+  observeRendGallery(data);
+  smallSpinnerOn();
 }
 
 export default function renderLocalStorageExport(value) {
@@ -31,4 +32,3 @@ export default function renderLocalStorageExport(value) {
   refs.libraryWatchedBtn.classList.add('button--is-active');
   renderLocalStorage(value);
 }
-
