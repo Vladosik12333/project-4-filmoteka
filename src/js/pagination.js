@@ -45,3 +45,7 @@ export function startPagination(query) {
     renderPage('fetchMovies', query, nextPage);
   });
 }
+
+export function showPaginationBtns() {
+  document.querySelector('#pagination').classList.remove('is-hidden');
+}

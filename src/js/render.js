@@ -1,6 +1,7 @@
 import template from '../templates/card-gallery.hbs';
 import MovieApiService from './api';
 import { smallSpinnerOn, largeSpinnerOff } from './spinner';
+import { showPaginationBtns } from './pagination';
 
 const api = new MovieApiService();
 
@@ -28,6 +29,7 @@ export default async function renderGalleryFromApi(method, query, nextPage) {
   largeSpinnerOff();
   appendGallery(dataToRender);
   smallSpinnerOn();
+  showPaginationBtns();
 
   if (method === 'fetchMovies') return totalPages;
 }
