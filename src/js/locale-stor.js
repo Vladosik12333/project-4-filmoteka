@@ -1,20 +1,28 @@
 import { showErrorMessege } from './on-error';
 
+
+
+
 export default class LocalStorage {
+
+auditId(objj , keyy){
+  const listParse = JSON.parse(localStorage.getItem(keyy));
+  if (listParse) {
+    const uniqueId = listParse.find(film => film.id === objj.id);
+    return !uniqueId
+}
+}
+
+
   _deleted(key, obj) {
     const listParse = JSON.parse(localStorage.getItem(key));
-    if (listParse) {
-      const uniqueId = listParse.find(film => film.id === obj.id);
-      if (!uniqueId) {
-        return alert(`The "${obj.original_title}" movie is not in your library.`);
-      } else {
         const newList = listParse.filter(film => film.id !== obj.id);
         this._save(key, newList);
+        
       }
-    } else {
-      return alert(`There are no movies in your "${key}" library.`);
-    }
-  }
+
+    
+  
 
   _load(key) {
     try {
@@ -75,6 +83,7 @@ export default class LocalStorage {
       if (watchParse.find(num => num.id === newObj.id)) return alert('The movie is already there.');
       arrayToLS.push(...watchParse, newObj);
       this._save('watched', arrayToLS);
+
     } else {
       arrayToLS.push(newObj);
       this._save('watched', arrayToLS);

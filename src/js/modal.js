@@ -16,6 +16,8 @@ const ls = new LocalStorage();
 
 refs.cardContainer.addEventListener('click', openModalFilm);
 
+
+
 function openModalFilm(evt) {
   evt.preventDefault();
   const isFilmCardId = evt.path[2].dataset.id;
@@ -24,17 +26,37 @@ function openModalFilm(evt) {
     return;
   }
 
+
   api.fetchMoviesById(isFilmCardId).then(response => {
     refs.modalFilmInfo.innerHTML = template(response);
 
     const modalWatchedBtn = document.querySelector('#modal-watched');
     const modalQueueBtn = document.querySelector('#modal-queue');
 
-    modalWatchedBtn.addEventListener('click', () => {
-      ls.saveWatched(response);
+
+    changeClassButt (response,'watched',modalWatchedBtn );
+    changeClassButt (response,'queue',modalQueueBtn );
+
+    modalWatchedBtn.addEventListener('click', (evt) => {
+      evt.target.blur()
+    if(ls.auditId(response , 'watched')){
+      addClass(evt.currentTarget, 'watched')
+       ls.saveWatched(response);
+    }else{ 
+      deleteClass(evt.currentTarget, 'watched')
+      ls.deleteWatch(response)
+    }
+
     });
-    modalQueueBtn.addEventListener('click', () => {
-      ls.saveQueue(response);
+    modalQueueBtn.addEventListener('click', (evt) => {
+      evt.target.blur()
+      if (ls.auditId(response , 'queue')){
+        addClass(modalQueueBtn, 'queue')
+     ls.saveQueue(response);
+    }else{ 
+      ls.deleteQueue(response)
+      deleteClass(modalQueueBtn, 'queue') 
+    }
     });
   });
 
@@ -65,3 +87,25 @@ function closeModal() {
   refs.backdrop.removeEventListener('click', backdropClick);
   window.removeEventListener('keydown', onPressEsc);
 }
+
+
+
+function changeClassButt (res, key , butt){
+  if (ls.auditId(res , key)) {
+    deleteClass(butt, key);
+  }else{
+    addClass(butt, key);
+  }
+}
+
+
+function addClass (but, name){
+  but.textContent = `Delete ${name}`;
+  but.classList.add('button--is-active');
+}
+function deleteClass(but , name){
+  but.classList.remove('button--is-active');
+  but.textContent = `Add to ${name}`;
+}
+
+
