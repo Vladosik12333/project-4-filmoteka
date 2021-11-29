@@ -1,4 +1,4 @@
-import { showErrorMessege } from './on-error';
+import { showErrorMessege, stopErrorMessage } from './on-error';
 
 export default class LocalStorage {
   _deleted(key, obj) {
@@ -17,6 +17,7 @@ export default class LocalStorage {
   }
 
   _load(key) {
+    stopErrorMessage();
     try {
       const getValue = localStorage.getItem(key);
       if (getValue === null) {
