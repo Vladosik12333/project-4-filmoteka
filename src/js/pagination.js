@@ -33,6 +33,7 @@ export const pagination = new Pagination(container, options);
   pagination.on('beforeMove', async evt => {
     const { page: nextPage } = evt;
 
+    scrollToTop();
     renderPage('fetchMoviesInTrending', null, nextPage);
   });
 })();
@@ -42,10 +43,18 @@ export function startPagination(query) {
   pagination.on('beforeMove', evt => {
     const { page: nextPage } = evt;
 
+    scrollToTop();
     renderPage('fetchMovies', query, nextPage);
   });
 }
 
 export function showPaginationBtns() {
   document.querySelector('#pagination').classList.remove('is-hidden');
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 }
