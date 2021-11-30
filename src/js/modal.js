@@ -21,6 +21,7 @@ refs.cardContainer.addEventListener('click', openModalFilm);
 
 function openModalFilm(evt) {
   evt.preventDefault();
+  refs.modalFilmCont.classList.add('backdrop--animation');
   const isFilmCardId = evt.path[2].dataset.id;
 
   if (!isFilmCardId) {
@@ -87,6 +88,7 @@ function backdropClick(evt) {
 }
 
 function closeModal() {
+  refs.modalFilmCont.classList.remove('backdrop--animation');
   refs.modalFilmInfo.innerHTML = '';
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');
