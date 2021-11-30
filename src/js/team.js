@@ -5,7 +5,6 @@ refs = {
   closeModalButton: document.querySelector('.button-close-team-modal'),
 };
 
-console.log(refs.buttonFooter);
 refs.buttonFooter.addEventListener('click', openModal);
 
 function openModal(event) {
