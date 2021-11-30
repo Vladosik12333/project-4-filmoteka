@@ -1,14 +1,3 @@
-@keyframes modalAnim {
-  from {
-    top: -150px;
-    opacity: 0;
-  }
-  to {
-    top: 0px;
-    opacity: 1;
-  }
-}
-
 body.scroll-hidden {
   overflow: hidden;
 }
@@ -25,10 +14,10 @@ body.scroll-hidden {
   background-color: rgba(0, 0, 0, 0.25);
 
   opacity: 1;
-  
+
   &--animation {
     animation-name: modalAnim;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.215, 0.6, 0.35, 1);
   }
 
@@ -47,25 +36,73 @@ body.scroll-hidden {
   position: absolute;
   top: 20px;
   left: 50%;
-
   width: 280px;
   max-height: 95vh;
   transform: translate(-50%, 0) scale(1);
   overflow-y: auto;
 
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    @keyframes modalAnim {
+      from {
+        top: -50px;
+        opacity: 0;
+      }
+      to {
+        top: 20px;
+        opacity: 1;
+      }
+    }
+    min-height: 400px;
+  }
+
   @media screen and (min-width: 768px) and (max-width: 1023px) {
+    @keyframes modalAnim {
+      from {
+        top: 10px;
+        opacity: 0;
+      }
+      to {
+        top: 288px;
+        opacity: 1;
+      }
+    }
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     width: 618px;
+    min-height: 562px;
   }
 
   @media screen and (min-width: 1024px) {
+    @keyframes modalAnim {
+      from {
+        top: 0px;
+        opacity: 0;
+      }
+      to {
+        top: 288px;
+        opacity: 1;
+      }
+    }
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     width: 882px;
+    min-height: 562px;
   }
 
   background-color: $textLightColor;
+
+  // &--team {
+  //   @keyframes modalAnim {
+  //     from {
+  //       top: 0px;
+  //       opacity: 0;
+  //     }
+  //     to {
+  //       top: 288px;
+  //       opacity: 1;
+  //     }
+  //   }
+  // }
 }

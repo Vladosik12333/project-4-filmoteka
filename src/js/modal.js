@@ -18,7 +18,7 @@ refs.cardContainer.addEventListener('click', openModalFilm);
 
 function openModalFilm(evt) {
   evt.preventDefault();
-  refs.backdrop.classList.remove('backdrop--animation');
+  refs.modalFilmCont.classList.add('backdrop--animation');
   const isFilmCardId = evt.path[2].dataset.id;
 
   if (!isFilmCardId) {
@@ -27,7 +27,6 @@ function openModalFilm(evt) {
 
   api.fetchMoviesById(isFilmCardId).then(response => {
     refs.modalFilmInfo.innerHTML = template(response);
-    refs.backdrop.classList.add('backdrop--animation');
 
     const modalWatchedBtn = document.querySelector('#modal-watched');
     const modalQueueBtn = document.querySelector('#modal-queue');
@@ -61,6 +60,7 @@ function backdropClick(evt) {
 }
 
 function closeModal() {
+  refs.modalFilmCont.classList.remove('backdrop--animation');
   refs.modalFilmInfo.innerHTML = '';
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');

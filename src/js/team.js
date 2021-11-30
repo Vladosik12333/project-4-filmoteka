@@ -3,13 +3,14 @@ refs = {
   backdrop: document.querySelector('.js-backdrop-team'),
   buttonFooter: document.querySelector('.footer-info__button'),
   closeModalButton: document.querySelector('.button-close-team-modal'),
+  modal: document.querySelector('.modal-team'),
 };
 
 refs.buttonFooter.addEventListener('click', openModal);
 
 function openModal(event) {
   event.preventDefault();
-  refs.backdrop.classList.add('backdrop--animation');
+  refs.modal.classList.add('backdrop--animation');
 
   refs.bodyEl.classList.add('scroll-hidden');
   refs.backdrop.classList.remove('backdrop--hidden');
@@ -32,7 +33,7 @@ function backdropClick(evt) {
 }
 
 function closeModal() {
-  refs.backdrop.classList.remove('backdrop--animation');
+  refs.modal.classList.remove('backdrop--animation');
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');
   refs.backdrop.removeEventListener('click', backdropClick);
