@@ -1,8 +1,21 @@
+@keyframes expand {
+  0% {
+    transform: translateX(1400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
 .main-section {
   text-align: center;
   background-color: $textLightColor;
   padding-top: 20px;
   padding-bottom: 40px;
+
+  &--animation {
+    animation: expand 0.8s ease forwards;
+  }
 
   @media screen and (min-width: 768px) {
     padding-top: 60px;
