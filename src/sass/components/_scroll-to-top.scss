@@ -2,12 +2,17 @@
   position: fixed;
   bottom: 20px;
   right: 5px;
+
   z-index: 100;
-  display: none;
+  display: block;
   cursor: pointer;
-  padding: 1px;
+
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
 
   &__icon {
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,4 +41,9 @@
       height: 40px;
     }
   }
+}
+
+.show-scroll-button {
+  transform: translateY(0);
+  opacity: 1;
 }

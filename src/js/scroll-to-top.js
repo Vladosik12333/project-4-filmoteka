@@ -1,17 +1,19 @@
 document.addEventListener("scroll", handleScroll);
 
-const scrollToTopBtn = document.querySelector(".scroll-to-top");
+var scrollToTopBtn = document.querySelector(".scroll-to-top");
 
 function handleScroll() {
-  let scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const GOLDEN_RATIO = 0.1;
+  var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var GOLDEN_RATIO = 0.1;
 
   if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
     
-    scrollToTopBtn.style.display = "block";
+    if(!scrollToTopBtn.classList.contains("show-scroll-button"))
+    scrollToTopBtn.classList.add("show-scroll-button")
   } else {
-    
-    scrollToTopBtn.style.display = "none";
+   
+    if(scrollToTopBtn.classList.contains("show-scroll-button"))
+    scrollToTopBtn.classList.remove("show-scroll-button")
   }
 }
 
