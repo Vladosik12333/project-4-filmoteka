@@ -18,7 +18,7 @@ body.scroll-hidden {
   &--animation {
     animation-name: modalAnim;
     animation-duration: 1s;
-    animation-timing-function: cubic-bezier(0.215, 0.6, 0.35, 1);
+    animation-timing-function: $animationFunction;
   }
 
   &--hidden {
@@ -80,7 +80,7 @@ body.scroll-hidden {
         opacity: 0;
       }
       to {
-        top:50%;
+        top: 50%;
         opacity: 1;
       }
     }
@@ -92,17 +92,4 @@ body.scroll-hidden {
   }
 
   background-color: $textLightColor;
-
-  // &--team {
-  //   @keyframes modalAnim {
-  //     from {
-  //       top: 0px;
-  //       opacity: 0;
-  //     }
-  //     to {
-  //       top: 288px;
-  //       opacity: 1;
-  //     }
-  //   }
-  // }
 }
