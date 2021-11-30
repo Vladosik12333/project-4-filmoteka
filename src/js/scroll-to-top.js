@@ -1,10 +1,10 @@
 document.addEventListener("scroll", handleScroll);
 
-var scrollToTopBtn = document.querySelector(".scroll-to-top");
+const scrollToTopBtn = document.querySelector(".scroll-to-top");
 
 function handleScroll() {
-  var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var GOLDEN_RATIO = 0.1;
+ let scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const GOLDEN_RATIO = 0.1;
 
   if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
     
