@@ -43,4 +43,4 @@ function e(e){e.preventDefault(),refs.bodyEl.classList.add("scroll-hidden"),refs
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/api.js"),require("./js/locale-stor.js"),require("./js/pagination"),require("./js/render"),require("./js/header-switching"),require("./js/gallery"),require("./js/modal"),require("./js/on-error"),require("./js/library"),require("./js/search-on-input"),require("./js/team");
 },{"./sass/main.scss":"clu1","./js/api.js":"cZF8","./js/locale-stor.js":"tMMP","./js/pagination":"o8lo","./js/render":"Barx","./js/header-switching":"e11I","./js/gallery":"chxP","./js/modal":"RSqK","./js/on-error":"xaqb","./js/library":"BfNj","./js/search-on-input":"RBln","./js/team":"ZxpD"}]},{},["Focm"], null)
-//# sourceMappingURL=/project-4-filmoteka/src.b8dc2fbf.js.map
+//# sourceMappingURL=/project-4-filmoteka/src.19f9fafe.js.map
