@@ -23,6 +23,7 @@ refs.libraryQueueBtn.addEventListener('click', () => {
 });
 
 function renderLocalStorage(value) {
+  refs.resultTemplate.classList.add('main-section--animation');
   const data = ls.get(value);
   observeRendGallery(data);  
 }
