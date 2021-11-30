@@ -5,24 +5,11 @@ import { showErrorMessege } from './on-error';
 
 export default class LocalStorage {
 
-auditId(objj , keyy){
-  const listParse = JSON.parse(localStorage.getItem(keyy));
-  if (listParse) {
-    const uniqueId = listParse.find(film => film.id === objj.id);
-    return !uniqueId
-}
-}
-
-
   _deleted(key, obj) {
     const listParse = JSON.parse(localStorage.getItem(key));
         const newList = listParse.filter(film => film.id !== obj.id);
         this._save(key, newList);
-        
       }
-
-    
-  
 
   _load(key) {
     try {
@@ -101,4 +88,13 @@ auditId(objj , keyy){
   deleteQueue(obj) {
     this._deleted('queue', obj);
   }
+  
+  searchDoubledId(obj , key){
+    const listParse = JSON.parse(localStorage.getItem(key));
+    if (listParse) {
+      const uniqueId = listParse.find(film => film.id === obj.id);
+      return !uniqueId
+    }
+  }
+  
 }
