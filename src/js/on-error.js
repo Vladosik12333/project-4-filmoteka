@@ -18,7 +18,9 @@ function runErrorMessage() {
 }
 
 function stopErrorMessage() {
-  refs.errorContainer.classList.add('is-hidden');
+  if (!refs.errorContainer.classList.contains('is-hidden')) {
+    refs.errorContainer.classList.add('is-hidden');
+  }
 }
 
-export { showErrorMessege };
+export { showErrorMessege, stopErrorMessage };
