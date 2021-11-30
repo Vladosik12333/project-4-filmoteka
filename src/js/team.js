@@ -9,6 +9,7 @@ refs.buttonFooter.addEventListener('click', openModal);
 
 function openModal(event) {
   event.preventDefault();
+  refs.backdrop.classList.add('backdrop--animation');
 
   refs.bodyEl.classList.add('scroll-hidden');
   refs.backdrop.classList.remove('backdrop--hidden');
@@ -31,6 +32,7 @@ function backdropClick(evt) {
 }
 
 function closeModal() {
+  refs.backdrop.classList.remove('backdrop--animation');
   refs.bodyEl.classList.remove('scroll-hidden');
   refs.backdrop.classList.add('backdrop--hidden');
   refs.backdrop.removeEventListener('click', backdropClick);

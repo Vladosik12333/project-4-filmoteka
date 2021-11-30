@@ -1,3 +1,14 @@
+@keyframes modalAnim {
+  from {
+    top: -150px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
 body.scroll-hidden {
   overflow: hidden;
 }
@@ -14,6 +25,12 @@ body.scroll-hidden {
   background-color: rgba(0, 0, 0, 0.25);
 
   opacity: 1;
+  
+  &--animation {
+    animation-name: modalAnim;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.215, 0.6, 0.35, 1);
+  }
 
   &--hidden {
     opacity: 0;
