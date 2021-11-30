@@ -1,6 +1,8 @@
+
 import template from '../templates/card-modal.hbs';
 import ApiService from './api';
 import LocalStorage from './locale-stor';
+import renderLocalStorageExport from './library'
 
 const refs = {
   backdrop: document.querySelector('.js-backdrop-film'),
@@ -9,6 +11,7 @@ const refs = {
   closeModalButton: document.querySelector('.js-modal-button-close'),
   bodyEl: document.body,
   cardContainer: document.querySelector('.gallery'),
+  headers: document.querySelector('.header')
 };
 
 const api = new ApiService();
@@ -29,12 +32,37 @@ function openModalFilm(evt) {
 
     const modalWatchedBtn = document.querySelector('#modal-watched');
     const modalQueueBtn = document.querySelector('#modal-queue');
+    const libraryBtnWatched = document.querySelector('#library-watched');
+    const libraryBtnQueue = document.querySelector('#library-queue');
 
-    modalWatchedBtn.addEventListener('click', () => {
-      ls.saveWatched(response);
+    ls.changeClassButt(response, 'watched', modalWatchedBtn);
+    ls.changeClassButt(response, 'queue', modalQueueBtn);
+
+    modalWatchedBtn.addEventListener('click', (evt) => {
+      evt.target.blur()
+      if (ls.searchDoubledId(response , 'watched')){
+        ls.saveWatched(response, modalWatchedBtn)
+      }else{
+        ls.deleteWatch(response, modalWatchedBtn);
+      }
+      if (!refs.headers.classList.contains('header--home')){
+        if(libraryBtnWatched.classList.contains('button--is-active')){ 
+          renderLocalStorageExport('watched');
+        }
+      }
     });
-    modalQueueBtn.addEventListener('click', () => {
-      ls.saveQueue(response);
+    modalQueueBtn.addEventListener('click', (evt) => {
+      evt.target.blur()
+      if (ls.searchDoubledId(response , 'queue')){
+        ls.saveQueue(response, modalQueueBtn)
+      }else{
+        ls.deleteQueue(response, modalQueueBtn);
+      }
+      if (!refs.headers.classList.contains('header--home')){
+        if(libraryBtnQueue.classList.contains('button--is-active')){ 
+          renderLocalStorageExport('queue');
+        }        
+      }
     });
   });
 

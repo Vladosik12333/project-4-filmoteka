@@ -3,17 +3,18 @@ import { showErrorMessege, stopErrorMessage } from './on-error';
 export default class LocalStorage {
   _deleted(key, obj) {
     const listParse = JSON.parse(localStorage.getItem(key));
-    if (listParse) {
-      const uniqueId = listParse.find(film => film.id === obj.id);
-      if (!uniqueId) {
-        return alert(`The "${obj.original_title}" movie is not in your library.`);
-      } else {
         const newList = listParse.filter(film => film.id !== obj.id);
         this._save(key, newList);
       }
-    } else {
-      return alert(`There are no movies in your "${key}" library.`);
-    }
+
+  _addClass (btn, name){
+    btn.textContent = `Delete ${name}`;
+    btn.classList.add('button--is-active');
+  }
+    
+  _deleteClass(btn , name){
+    btn.classList.remove('button--is-active');
+    btn.textContent = `Add to ${name}`;
   }
 
   _load(key) {
@@ -33,6 +34,7 @@ export default class LocalStorage {
     try {
       const getString = JSON.stringify(value);
       localStorage.setItem(key, getString);
+
     } catch (err) {
       showErrorMessege('Select a movie.');
     }
@@ -54,7 +56,7 @@ export default class LocalStorage {
     };
   }
 
-  saveQueue(obj) {
+  saveQueue(obj, btn) {
     const newObj = this._newObjForLS(obj);
     const queueParse = JSON.parse(localStorage.getItem('queue'));
     const arrayToLS = [];
@@ -66,31 +68,52 @@ export default class LocalStorage {
       arrayToLS.push(newObj);
       this._save('queue', arrayToLS);
     }
+    this._addClass(btn, 'queue')
   }
 
-  saveWatched(obj) {
+  saveWatched(obj, btn) {
     const newObj = this._newObjForLS(obj);
     const watchParse = JSON.parse(localStorage.getItem('watched'));
     const arrayToLS = [];
     if (watchParse) {
       if (watchParse.find(num => num.id === newObj.id)) return alert('The movie is already there.');
       arrayToLS.push(...watchParse, newObj);
-      this._save('watched', arrayToLS);
+      this._save('watched', arrayToLS, btn);
     } else {
       arrayToLS.push(newObj);
-      this._save('watched', arrayToLS);
+      this._save('watched', arrayToLS, btn);
     }
+    this._addClass(btn, 'watched')
   }
 
   get(key) {
     return this._load(key);
   }
 
-  deleteWatch(obj) {
+  deleteWatch(obj, btn) {
     this._deleted('watched', obj);
+    this._deleteClass(btn , 'watched')
   }
 
-  deleteQueue(obj) {
+  deleteQueue(obj, btn) {
     this._deleted('queue', obj);
+    this._deleteClass(btn , 'queue')
+  }
+
+  changeClassButt (obj, key , btn){
+    if (this.searchDoubledId(obj , key)) {      
+      this._deleteClass(btn, key);
+      return;
+    }else{
+      this._addClass(btn, key);
+    }
+  }
+
+  searchDoubledId(obj , key){
+    const listParse = JSON.parse(localStorage.getItem(key));
+    if (listParse) {
+      const uniqueId = listParse.find(film => film.id === obj.id);
+      return !uniqueId
+    }
   }
 }
