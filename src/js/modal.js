@@ -62,6 +62,8 @@ function openModalFilm(evt) {
       if (!refs.headers.classList.contains('header--home')){
         if(libraryBtnQueue.classList.contains('button--is-active')){ 
           renderLocalStorageExport('queue');
+          libraryBtnQueue.classList.add('button--is-active');
+          libraryBtnWatched.classList.remove('button--is-active');
         }        
       }
     });
