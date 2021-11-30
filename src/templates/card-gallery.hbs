@@ -1,14 +1,6 @@
 {{#each this}}
 <li class="card-gallery" data-id={{id}}>
-    <div class="spinner spinner--small">
-      <div class="spinner-grow text-muted"></div>
-      <div class="spinner-grow text-primary"></div>
-      <div class="spinner-grow text-success"></div>
-      <div class="spinner-grow text-info"></div>
-      <div class="spinner-grow text-warning"></div>
-      <div class="spinner-grow text-danger"></div>
-      {{!-- <div class="spinner-grow text-secondary"></div> --}}
-    </div>    
+  <div class="spinner spinner--small"></div>    
   <div class="card-gallery__poster">
     {{#if this.poster_path}}
       <img src='https://image.tmdb.org/t/p/w300/{{poster_path}}' alt='{{original_title}}' class="card-gallery__image" />
