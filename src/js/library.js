@@ -1,6 +1,5 @@
 import LocalStorage from './locale-stor.js';
-import observeRendGallery from './observer-library'
-
+import observeRendGallery from './observer-library';
 
 const ls = new LocalStorage();
 
@@ -25,7 +24,7 @@ refs.libraryQueueBtn.addEventListener('click', () => {
 function renderLocalStorage(value) {
   refs.resultTemplate.classList.add('main-section--animation');
   const data = ls.get(value);
-  observeRendGallery(data);  
+  observeRendGallery(data);
 }
 
 export default function renderLocalStorageExport(value) {

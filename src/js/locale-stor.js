@@ -3,16 +3,16 @@ import { showErrorMessege, stopErrorMessage } from './on-error';
 export default class LocalStorage {
   _deleted(key, obj) {
     const listParse = JSON.parse(localStorage.getItem(key));
-        const newList = listParse.filter(film => film.id !== obj.id);
-        this._save(key, newList);
-      }
+    const newList = listParse.filter(film => film.id !== obj.id);
+    this._save(key, newList);
+  }
 
-  _addClass (btn, name){
+  _addClass(btn, name) {
     btn.textContent = `Delete ${name}`;
     btn.classList.add('button--is-active');
   }
-    
-  _deleteClass(btn , name){
+
+  _deleteClass(btn, name) {
     btn.classList.remove('button--is-active');
     btn.textContent = `Add to ${name}`;
   }
@@ -20,11 +20,11 @@ export default class LocalStorage {
   _load(key) {
     stopErrorMessage();
     try {
-      const getValue = localStorage.getItem(key);
-      if (getValue === null) {
+      const getValue = JSON.parse(localStorage.getItem(key));
+      if (getValue.length === 0) {
         throw ReferenceError();
       }
-      return JSON.parse(getValue);
+      return getValue;
     } catch (err) {
       showErrorMessege(`Your "${key}" library is empty. Add a movie, please.`);
     }
@@ -34,7 +34,6 @@ export default class LocalStorage {
     try {
       const getString = JSON.stringify(value);
       localStorage.setItem(key, getString);
-
     } catch (err) {
       showErrorMessege('Select a movie.');
     }
@@ -68,7 +67,7 @@ export default class LocalStorage {
       arrayToLS.push(newObj);
       this._save('queue', arrayToLS);
     }
-    this._addClass(btn, 'queue')
+    this._addClass(btn, 'queue');
   }
 
   saveWatched(obj, btn) {
@@ -83,7 +82,7 @@ export default class LocalStorage {
       arrayToLS.push(newObj);
       this._save('watched', arrayToLS, btn);
     }
-    this._addClass(btn, 'watched')
+    this._addClass(btn, 'watched');
   }
 
   get(key) {
@@ -92,28 +91,29 @@ export default class LocalStorage {
 
   deleteWatch(obj, btn) {
     this._deleted('watched', obj);
-    this._deleteClass(btn , 'watched')
+    this._deleteClass(btn, 'watched');
   }
 
   deleteQueue(obj, btn) {
     this._deleted('queue', obj);
-    this._deleteClass(btn , 'queue')
+    this._deleteClass(btn, 'queue');
   }
 
-  changeClassButt (obj, key , btn){
-    if (this.searchDoubledId(obj , key)) {      
+  changeClassButt(obj, key, btn) {
+    if (this.searchDoubledId(obj, key)) {
       this._deleteClass(btn, key);
       return;
-    }else{
+    } else {
       this._addClass(btn, key);
     }
   }
 
-  searchDoubledId(obj , key){
+  searchDoubledId(obj, key) {
     const listParse = JSON.parse(localStorage.getItem(key));
     if (listParse) {
       const uniqueId = listParse.find(film => film.id === obj.id);
-      return !uniqueId
+      return !uniqueId;
     }
+    return true;
   }
 }
