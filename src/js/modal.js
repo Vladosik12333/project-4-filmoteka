@@ -1,8 +1,7 @@
-
 import template from '../templates/card-modal.hbs';
 import ApiService from './api';
 import LocalStorage from './locale-stor';
-import renderLocalStorageExport from './library'
+import renderLocalStorageExport from './library';
 
 const refs = {
   backdrop: document.querySelector('.js-backdrop-film'),
@@ -11,7 +10,7 @@ const refs = {
   closeModalButton: document.querySelector('.js-modal-button-close'),
   bodyEl: document.body,
   cardContainer: document.querySelector('.gallery'),
-  headers: document.querySelector('.header')
+  headers: document.querySelector('.header'),
 };
 
 const api = new ApiService();
@@ -22,7 +21,10 @@ refs.cardContainer.addEventListener('click', openModalFilm);
 function openModalFilm(evt) {
   evt.preventDefault();
   refs.modalFilmCont.classList.add('backdrop--animation');
-  const isFilmCardId = evt.path[2].dataset.id;
+  /////
+  const path = evt.composedPath();
+  const isFilmCardId = path[2].dataset.id;
+  /////
 
   if (!isFilmCardId) {
     return;
@@ -39,32 +41,32 @@ function openModalFilm(evt) {
     ls.changeClassButt(response, 'watched', modalWatchedBtn);
     ls.changeClassButt(response, 'queue', modalQueueBtn);
 
-    modalWatchedBtn.addEventListener('click', (evt) => {
-      evt.target.blur()
-      if (ls.searchDoubledId(response , 'watched')){
-        ls.saveWatched(response, modalWatchedBtn)
-      }else{
+    modalWatchedBtn.addEventListener('click', evt => {
+      evt.target.blur();
+      if (ls.searchDoubledId(response, 'watched')) {
+        ls.saveWatched(response, modalWatchedBtn);
+      } else {
         ls.deleteWatch(response, modalWatchedBtn);
       }
-      if (!refs.headers.classList.contains('header--home')){
-        if(libraryBtnWatched.classList.contains('button--is-active')){ 
+      if (!refs.headers.classList.contains('header--home')) {
+        if (libraryBtnWatched.classList.contains('button--is-active')) {
           renderLocalStorageExport('watched');
         }
       }
     });
-    modalQueueBtn.addEventListener('click', (evt) => {
-      evt.target.blur()
-      if (ls.searchDoubledId(response , 'queue')){
-        ls.saveQueue(response, modalQueueBtn)
-      }else{
+    modalQueueBtn.addEventListener('click', evt => {
+      evt.target.blur();
+      if (ls.searchDoubledId(response, 'queue')) {
+        ls.saveQueue(response, modalQueueBtn);
+      } else {
         ls.deleteQueue(response, modalQueueBtn);
       }
-      if (!refs.headers.classList.contains('header--home')){
-        if(libraryBtnQueue.classList.contains('button--is-active')){ 
+      if (!refs.headers.classList.contains('header--home')) {
+        if (libraryBtnQueue.classList.contains('button--is-active')) {
           renderLocalStorageExport('queue');
           libraryBtnQueue.classList.add('button--is-active');
           libraryBtnWatched.classList.remove('button--is-active');
-        }        
+        }
       }
     });
   });
